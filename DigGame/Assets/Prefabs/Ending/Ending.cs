@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Ending : MonoBehaviour
 {
+    public GameObject gameUI;
+
     public FollowCamera followCamera;
     public Transform closeOutTargetPos;
     public Vector3 closeOutOffset;
@@ -15,6 +17,8 @@ public class Ending : MonoBehaviour
     public Vector3 closeUpOffset;
     public float closeUpSize;
     public float closeUpDuration;
+
+    public GameObject moleObj;
 
     public GameObject normalHouse;
     public GameObject endingHouse;
@@ -30,6 +34,7 @@ public class Ending : MonoBehaviour
     {
         normalHouse.SetActive(false);
         endingHouse.SetActive(true);
+        gameUI.SetActive(false);
 
         followCamera.target = closeOutTargetPos;
         followCamera.offset = closeOutOffset;
@@ -38,6 +43,7 @@ public class Ending : MonoBehaviour
 
         yield return new WaitForSeconds(9f);
 
+        moleObj.SetActive(false);
         followCamera.target = closeUpTargetPos;
         followCamera.offset = closeUpOffset;
         followCamera.cameraSize = closeUpSize;

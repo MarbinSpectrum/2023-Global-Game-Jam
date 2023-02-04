@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static Animal;
 using static UnityEngine.GraphicsBuffer;
 
 public class PoolManager : MonoBehaviour
@@ -23,37 +24,57 @@ public class PoolManager : MonoBehaviour
     public GameObject ElephantImg;
     public GameObject SnakeImg;
 
-   
+    public uint CatRate;
+    public uint RabbitRate;
+    public uint TurtleRate;
+    public uint PuppyRate;
+    public uint ElephantRate;
+    public uint SnakeRate;
+
 
     public int[] CurAnimal;
 
     private void Awake()
     {
         AnimalSetting();
-        //NowAnimal();
     }
 
-
-    private void Update()
-    {
-
-        
-
-
-    }
 
 
     public void AnimalSetting()
     {
         Alloff();
-        int animalType = Random.Range(0, 7);
 
-      
+        Dictionary<AnimalType, int> aniRate = new Dictionary<AnimalType, int>();
+        aniRate[AnimalType.Cat] = (int)CatRate;
+        aniRate[AnimalType.Rabbit] = (int)RabbitRate;
+        aniRate[AnimalType.Turtle] = (int)TurtleRate;
+        aniRate[AnimalType.Puppy] = (int)PuppyRate;
+        aniRate[AnimalType.Elephant] = (int)ElephantRate;
+        aniRate[AnimalType.Snake] = (int)SnakeRate;
+
+        int sum = 0;
+        foreach (KeyValuePair<AnimalType, int> aniRatePair in aniRate)
+            sum += aniRatePair.Value;
+
+        AnimalType animalType = AnimalType.Cat;
+        int r = Random.Range(0, sum);
+        foreach (KeyValuePair<AnimalType, int> aniRatePair in aniRate)
+        {
+            int v = aniRatePair.Value;
+            AnimalType key = aniRatePair.Key;
+            if (r < v)
+            {
+                animalType = key;
+                break;
+            }
+            r -= v;
+        }
 
         switch (animalType)
         {
             // 0 : 고양이
-            case 0:
+            case AnimalType.Cat:
                 int cat = Random.Range(0,3);
 
                 if(cat == 0)
@@ -82,7 +103,7 @@ public class PoolManager : MonoBehaviour
                 break;
 
             // 1 : 토끼 
-            case 1:
+            case AnimalType.Rabbit:
                 int Rabbit = Random.Range(0, 2);
 
                 if (Rabbit == 0)
@@ -103,7 +124,7 @@ public class PoolManager : MonoBehaviour
                 break;
 
             // 2 : 거북이 
-            case 2:
+            case AnimalType.Turtle:
                 int Turtle = Random.Range(0, 2);
 
                 if (Turtle == 0)
@@ -124,7 +145,7 @@ public class PoolManager : MonoBehaviour
                 break;
 
             // 3  : 강아지 
-            case 3:
+            case AnimalType.Puppy:
 
                 int Puppy = Random.Range(0, 2);
 
@@ -146,7 +167,7 @@ public class PoolManager : MonoBehaviour
                 break;
 
             // 4 : 코끼5
-            case 4:
+            case AnimalType.Elephant:
                 NowAnimalId = 501;
                 ElephantImg.SetActive(true);
                 AnimalNum = 9;
@@ -154,7 +175,7 @@ public class PoolManager : MonoBehaviour
                 break;
 
             // 5 : 뱀 
-            case 5:
+            case AnimalType.Snake:
                 int Snake = Random.Range(0, 2);
 
                 if (Snake == 0)

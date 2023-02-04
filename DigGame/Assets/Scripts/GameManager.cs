@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class GameManager : DontDestroySingleton<GameManager>
 {
-    public Spawner spawner;
+    public PoolManager poolManager;
 
     public bool isGameover = false; // 게임 오버 상태
     public Ending endObj;
@@ -49,7 +49,7 @@ public class GameManager : DontDestroySingleton<GameManager>
 
     private void Update()
     {
-        //DialogueSystem();
+        DialogueSystem();
     }
 
     // 점수를 증가시키는 메서드
@@ -67,7 +67,7 @@ public class GameManager : DontDestroySingleton<GameManager>
 
     public void DialogueSystem()
     {
-        DialogueText.text = spawner.DialogueNow;
+        DialogueText.text = poolManager.DialogueNow;
     }
 }
 

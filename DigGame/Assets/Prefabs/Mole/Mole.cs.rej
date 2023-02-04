@@ -1,9 +1,16 @@
 diff a/DigGame/Assets/Prefabs/Mole/Mole.cs b/DigGame/Assets/Prefabs/Mole/Mole.cs	(rejected hunks)
-@@ -70,7 +70,6 @@
+@@ -70,12 +70,12 @@
                  //y==1�ΰ������� ���� ������.
                  yield break;
              }
 -            if (pos.x == 5 && pos.x + 1 == movePos.x)
-             if (pos.y == 1 && pos.x == 5 && pos.x + 1 == movePos.x)
++            if (pos.y == 1 && pos.x == 5 && pos.x + 1 == movePos.x)
              {
                  //x==5�ΰ������� ���������� ������.
+                 yield break;
+             }
+-            if (pos.x == -5 && pos.x - 1 == movePos.x)
++            if (pos.y == 1 && pos.x == -5 && pos.x - 1 == movePos.x)
+             {
+                 //x==-5�ΰ������� �������� ������.
+                 yield break;

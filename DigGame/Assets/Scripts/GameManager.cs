@@ -7,14 +7,14 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
 
-    public Spawner spawner;
-    public static GameManager instance; // 싱글톤을 할당할 전역 변수
+    public PoolManager poolManager ;
+    public static GameManager instance;
 
     public bool isGameover = false; // 게임 오버 상태
-    public GameObject gameoverUI; // 게임 오버시 활성화 할 UI 게임 오브젝트
+   
 
     [Header("Timer System")]
-    public Text[] text_time;
+    //public Text[] text_time;
     public float curTime; //초
     public float maxMin; //분 // 일단 입력하게 해뒀는데 나중에 고정합쉬다 
 
@@ -64,18 +64,10 @@ public class GameManager : MonoBehaviour
         if (!isGameover)
         {
             curTime -= Time.deltaTime;
-            text_time[0].text = ("0" + (int)curTime / 60 % 60).ToString();
-            text_time[1].text = ((int)curTime % 60).ToString();
-
+           
             if ((int)curTime % 60 == 0 && (int)curTime / 60 % 60 == 0)
             {
                 isGameover = true;
-
-            }
-            else if (curTime < 0)
-            {
-                text_time[0].text = ("0" + (int)curTime / 60 % 60).ToString();
-                text_time[1].text = ((int)curTime % 60).ToString();
             }
         }
     }
@@ -88,7 +80,7 @@ public class GameManager : MonoBehaviour
 
     public void DialogueSystem()
     {
-        DialogueText.text = spawner.DialogueNow;
+       DialogueText.text = poolManager.DialogueNow;
     }
 
 

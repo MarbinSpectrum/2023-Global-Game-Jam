@@ -65,8 +65,21 @@ public class Mole : MonoBehaviour
 
             bool rCheck = tileManager.IsBlock(movePos.x, movePos.y); //다시한번 해당위치에 블록이 있는지 검사한다.
 
+            if(pos.y == 1 && pos.y + 1 == movePos.y)
+            {
+                yield break;
+            }
+            else if (pos.y == 1 && pos.x == 5 && pos.x + 1 == movePos.x)
+            {
+                yield break;
+            }
+            else if (pos.y == 1 && pos.x == -5 && pos.x - 1 == movePos.x)
+            {
+                yield break;
+            }
+
             //현재 좌표와 이동할 좌표를 이용해서 이동할 방향을 구한다.
-            if(pos.x + 1 == movePos.x)
+            if (pos.x + 1 == movePos.x)
             {
                 nowDic = Direction.Right;
             }

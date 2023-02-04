@@ -2235,7 +2235,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1186000776}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 405888bb86b64c04395cd0832915cbab, type: 3}
+  m_Script: {fileID: 11500000, guid: 1c9fc14b44ede554393d143e0040af01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bodyTile: {fileID: 0}
@@ -3020,7 +3020,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1754034517}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09cd7b1ff27f6aa41929efecc9b83996, type: 3}
+  m_Script: {fileID: 11500000, guid: 1eef507ea9d8b874a8f01ae46a207990, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bodyTile: {fileID: 11400000, guid: 7494bc1778f5f044bbb52bef5fe8e49c, type: 2}
@@ -3040,7 +3040,8 @@ MonoBehaviour:
   tileBody: {fileID: 811522137}
   tileOutline: {fileID: 1105784895}
   snowTile: {fileID: 11400000, guid: 6ba38e26f9aac1742965b4413a5fad1e, type: 2}
-  sandBiome: {fileID: 11400000, guid: 375152454dc81ea428093cc1f389aa00, type: 2}
+  biomeList:
+  - {fileID: 11400000, guid: 375152454dc81ea428093cc1f389aa00, type: 2}
 --- !u!1 &1781900109
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,6 +16,7 @@ public class TileManager : FieldObjectSingleton<TileManager>
     private void Start()
     {
         Dictionary<TileType, List<Vector2Int>>  tileList = createTileMap.CreateMap();
+        tileList[TileType.Obstacle] = new List<Vector2Int>();
 
         foreach (KeyValuePair<TileType, List<Vector2Int>> tileListPair in tileList)
         {
@@ -24,8 +25,6 @@ public class TileManager : FieldObjectSingleton<TileManager>
             if(tileGroups.ContainsKey(tileType))
             tileGroups[tileType].SetTile(posList, tileType);
         }
-
-
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////

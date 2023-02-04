@@ -48,20 +48,20 @@ public class Animal : MonoBehaviour
 
     void OnMouseUp()
     {
-        _dragging = false;
-        var v2 = new Vector2(this.transform.position.x, this.transform.position.y);
-        Vector2Int v2i;
-        v2i = new Vector2Int((int)v2.x, (int)v2.y);
-        if (!_clicked && !_crashed && !HouseManager.CheckHouse(v2i))
-        {
-            this.GetComponent<SpriteRenderer>().sprite = _changeSprite;
-            HouseManager.AddHouse(v2i);
-            Destroy(this.GetComponent<BoxCollider2D>());
-        }
-        else if (HouseManager.CheckHouse(v2i))
-        {
-            transform.position = _originalPosition;
-        }
+        //_dragging = false;
+        //var v2 = new Vector2(this.transform.position.x, this.transform.position.y);
+        //Vector2Int v2i;
+        //v2i = new Vector2Int((int)v2.x, (int)v2.y);
+        //if (!_clicked && !_crashed && !HouseManager.CheckHouse(v2i))
+        //{
+        //    this.GetComponent<SpriteRenderer>().sprite = _changeSprite;
+        //    HouseManager.AddHouse(v2i);
+        //    Destroy(this.GetComponent<BoxCollider2D>());
+        //}
+        //else if (HouseManager.CheckHouse(v2i))
+        //{
+        //    transform.position = _originalPosition;
+        //}
     }
 
     private void OnTriggerStay2D(Collider2D collision)

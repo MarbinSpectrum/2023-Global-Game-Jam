@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class SandTileGroup : TileGroup
+public class SandGroup : TileGroup
 {
     [SerializeField]
-    protected TileBase snowTile;
+    private TileBase snowTile;
+
     [SerializeField]
-    protected TileBase sandBiome;
+    private List<TileBase> biomeList = new List<TileBase>();
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// : pPosList의 좌표데이터 타일을 생성한다.
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public override void SetTile(List<Vector2Int> pPosList,TileType pTileType)
+    public override void SetTile(List<Vector2Int> pPosList, TileType pTileType)
     {
         tileType = pTileType;
 
@@ -45,12 +46,18 @@ public class SandTileGroup : TileGroup
             else
             {
                 int random = Random.Range(0, 100);
-                if(random < 90)
+                if (random < 90)
                     tileBody.SetTile(pos.x, pos.y, bodyTile);
                 else
-                    tileBody.SetTile(pos.x, pos.y, sandBiome);
+                {
+                    int r = Random.Range(0, biomeList.Count);
+                    TileBase tileB = biomeList[r];
+                    tileBody.SetTile(pos.x, pos.y, tileB);
+                }
+
             }
             UpdateOutBlock(pos);
         }
     }
+
 }

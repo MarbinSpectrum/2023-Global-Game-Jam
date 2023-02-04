@@ -8,7 +8,7 @@ public class TileGroup : MonoBehaviour
     protected TileType tileType;
 
     [SerializeField]
-    private TileBase bodyTile;
+    protected TileBase bodyTile;
     [SerializeField]
     private List<TileBase> outline = new List<TileBase>();
 

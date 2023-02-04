@@ -13,3 +13,11 @@ public enum TileType
 
 }
 
+public enum Direction
+{
+    Null = 0,
+    Left = 100,
+    Right = 200,
+    Up = 300,
+    Down = 400,
+}

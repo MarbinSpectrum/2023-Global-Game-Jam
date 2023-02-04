@@ -5,18 +5,21 @@ using UnityEngine.Tilemaps;
 
 public class TileGroup : MonoBehaviour
 {
-    private TileType tileType;
-    public TileBase bodyTile;
-    public List<TileBase> outline = new List<TileBase>();
+    protected TileType tileType;
 
     [SerializeField]
-    private TileBody tileBody;
+    private TileBase bodyTile;
+    [SerializeField]
+    private List<TileBase> outline = new List<TileBase>();
+
+    [SerializeField]
+    protected TileBody tileBody;
 
     [SerializeField]
     private TileOutline tileOutline;
 
-    private HashSet<Vector2Int> tileList = new HashSet<Vector2Int>();
-    private Dictionary<Vector2Int, int> tileLifes = new Dictionary<Vector2Int, int>();              //위치, 타일체력
+    protected HashSet<Vector2Int> tileList = new HashSet<Vector2Int>();
+    protected Dictionary<Vector2Int, int> tileLifes = new Dictionary<Vector2Int, int>();              //위치, 타일체력
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// : x,y 위치에 타일을 제거한다.
@@ -238,7 +241,7 @@ public class TileGroup : MonoBehaviour
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// : pPosList의 좌표데이터 타일을 생성한다.
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public void SetTile(List<Vector2Int> pPosList,TileType pTileType)
+    public virtual void SetTile(List<Vector2Int> pPosList,TileType pTileType)
     {
         tileType = pTileType;
 
@@ -287,7 +290,7 @@ public class TileGroup : MonoBehaviour
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// : pos위치의 블록을 캔다.
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public void DigTile(Vector2Int pos)
+    public virtual void DigTile(Vector2Int pos)
     {
         if (tileLifes.ContainsKey(pos) == false)
         {

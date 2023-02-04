@@ -70,12 +70,12 @@ public class Mole : MonoBehaviour
                 //y==1인곳에서는 위로 못간다.
                 yield break;
             }
-            if (pos.x == 5 && pos.x + 1 == movePos.x)
+            if (pos.y == 1 && pos.x == 5 && pos.x + 1 == movePos.x)
             {
                 //x==5인곳에서는 오른쪽으로 못간다.
                 yield break;
             }
-            if (pos.x == -5 && pos.x - 1 == movePos.x)
+            if (pos.y == 1 && pos.x == -5 && pos.x - 1 == movePos.x)
             {
                 //x==-5인곳에서는 왼쪽으로 못간다.
                 yield break;

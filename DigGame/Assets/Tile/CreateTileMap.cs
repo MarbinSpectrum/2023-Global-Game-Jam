@@ -20,18 +20,58 @@ public class CreateTileMap : MonoBehaviour
         //타일 생성함수는 임시로 만들었다. 나중에 수정예정
 
         Dictionary<TileType, List<Vector2Int>> tileList = new Dictionary<TileType, List<Vector2Int>>();
-        for(int y = 0; y > -h; y--)
-        {
 
-            for (int x = -5-h; x <= 5+h; x++)
+        HashSet<Vector2Int> obstaclePos = new HashSet<Vector2Int>();
+        List<Vector2Int> obstacleList = new List<Vector2Int>();
+
+        for(int i = 0; i < 300; i++)
+        {
+            int r = Random.Range(0, 30 * (10 + 2 * h));
+            int x = r % (10 + 2 * h) - (5 + h);
+            int y = -(r / (10 + 2 * h));
+            if (obstaclePos.Contains(new Vector2Int(x, y)) || obstaclePos.Contains(new Vector2Int(x, y - 1)) ||
+                obstaclePos.Contains(new Vector2Int(x + 1, y)) || obstaclePos.Contains(new Vector2Int(x + 1, y - 1)))
+                continue;
+            obstacleList.Add(new Vector2Int(x, y));
+            for (int j = 0; j < 4; j++)
+                obstaclePos.Add(new Vector2Int(x + j / 2, y - j % 2));
+        }
+        for (int i = 0; i < 200; i++)
+        {
+            int r = Random.Range(30 * (10 + 2 * h), 60 * (10 + 2 * h));
+            int x = r % (10 + 2 * h) - (5 + h);
+            int y = -(r / (10 + 2 * h));
+            if (obstaclePos.Contains(new Vector2Int(x, y)) || obstaclePos.Contains(new Vector2Int(x, y - 1)) ||
+                obstaclePos.Contains(new Vector2Int(x + 1, y)) || obstaclePos.Contains(new Vector2Int(x + 1, y - 1)))
+                continue;
+            obstacleList.Add(new Vector2Int(x, y));
+            for (int j = 0; j < 4; j++)
+                obstaclePos.Add(new Vector2Int(x + j / 2, y - j % 2));
+        }
+        for (int i = 0; i < 50; i++)
+        {
+            int r = Random.Range(60 * (10 + 2 * h), h * (10 + 2 * h));
+            int x = r % (10 + 2 * h) - (5 + h);
+            int y = -(r / (10 + 2 * h));
+            if (obstaclePos.Contains(new Vector2Int(x, y)) || obstaclePos.Contains(new Vector2Int(x, y - 1)) ||
+                obstaclePos.Contains(new Vector2Int(x + 1, y)) || obstaclePos.Contains(new Vector2Int(x + 1, y - 1)))
+                continue;
+            obstacleList.Add(new Vector2Int(x, y));
+            for (int j = 0; j < 4; j++)
+                obstaclePos.Add(new Vector2Int(x + j / 2, y - j % 2));
+        }
+
+        for (int y = 0; y > -h; y--)
+        {
+            for (int x = -5 - h; x <= 5 + h; x++)
             {
                 TileType tileType = TileType.Null;
 
                 if (-5 + y / 2 <= x && x <= 5 - y / 2)
                 {
-                    if (y > -h * 0.3f)
+                    if (y > -30)
                         tileType = TileType.Sand;
-                    else if (y > -h * 0.6f)
+                    else if (y > -60)
                         tileType = TileType.Ground;
                     else
                         tileType = TileType.DarkGound;
@@ -39,11 +79,17 @@ public class CreateTileMap : MonoBehaviour
                 else
                     tileType = TileType.Gravel;
 
-                if (tileList.ContainsKey(tileType) == false)
-                    tileList[tileType] = new List<Vector2Int>();
-                tileList[tileType].Add(new Vector2Int(x, y));
+
+                if (tileType != TileType.Null)
+                {
+                    if (tileList.ContainsKey(tileType) == false)
+                        tileList[tileType] = new List<Vector2Int>();
+                    tileList[tileType].Add(new Vector2Int(x, y));
+                }
             }
         }
+
+        tileList[TileType.Obstacle] = obstacleList;
 
         return tileList;
     }

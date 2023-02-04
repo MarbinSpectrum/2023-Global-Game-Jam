@@ -10,7 +10,7 @@ public enum TileType
     Ground = 100,
     DarkGound = 200,
     Gravel = 300,
-
+    Obstacle = 400,
 }
 
 public enum Direction

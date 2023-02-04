@@ -8,6 +8,21 @@ public class Animal : MonoBehaviour
     private bool _dragging, _crashed, _clicked;
     private Sprite _changeSprite;
 
+    public enum AnimalType
+    {
+        Cat,
+        Rabbit,
+        Turtle,
+        Puppy,
+        Elephant,
+        Snake
+    }
+
+    public AnimalType type;
+    public int ID;
+    public int point;
+    public string Dialogue;
+
 
     private void Awake()
     {

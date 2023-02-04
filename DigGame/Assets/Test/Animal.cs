@@ -5,7 +5,8 @@ using UnityEngine;
 public class Animal : MonoBehaviour
 {
     private Vector2 _offset, _originalPosition;
-    private bool _dragging, _crashed, _clicked;
+    private bool _dragging, _crashed;
+    public bool _clicked = true;
     private Sprite _changeSprite;
 
     public enum AnimalType

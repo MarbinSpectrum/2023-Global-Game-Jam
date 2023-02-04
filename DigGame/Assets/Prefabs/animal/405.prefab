@@ -73,8 +73,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cec647f50f6cc44ba83191f1cc189e3e, type: 3}
+  m_SortingOrder: 40
+  m_Sprite: {fileID: 21300000, guid: a0c9707a14c040a49afdad4ca3e19548, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_Size: {x: 4.6, y: 2.3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &5951211061388684618
@@ -97,7 +97,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b610a8e094e5b614391968e1710dd0db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  ID: 0
-  point: 0
-  Dialogue: 
+  _clicked: 1
+  type: 3
+  ID: 405
+  point: 6
+  Dialogue: "\uACA8\uC6B8\uB9CC \uC9C0\uB098\uBA74 \uC5C4\uB9C8\uB791 \uB9CC\uB0A0\uAC70\uC5D0\uC694
+    \uBA4D!"

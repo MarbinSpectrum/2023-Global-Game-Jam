@@ -9,6 +9,7 @@ public class Animal : MonoBehaviour
     public bool _clicked = true;
     private Sprite _changeSprite;
 
+
     public enum AnimalType
     {
         Cat,

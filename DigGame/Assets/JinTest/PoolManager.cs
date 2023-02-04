@@ -5,12 +5,12 @@ using UnityEngine;
 using static Animal;
 using static UnityEngine.GraphicsBuffer;
 
-public class PoolManager : MonoBehaviour
+public class PoolManager : FieldObjectSingleton<PoolManager>
 {
    
-    public GameObject[] prefabs; // ����1~~ 
-    List<GameObject>[] pools;
-    Animal animal;
+    public AnimalManager[] prefabs; // ����1~~ 
+    List<AnimalManager>[] pools;
+    public AnimalManager nowAnimal;
 
     public int NowAnimalId;
     public int AnimalNum;
@@ -218,9 +218,9 @@ public class PoolManager : MonoBehaviour
 
 
     // ���� ������Ʈ�� ��ȯ�ϴ� �Լ�
-    public GameObject Get(int typeNum)
+    public AnimalManager Get(int typeNum)
     {
-        GameObject select = null;
+        AnimalManager select = null;
         //NowAnimalNum = NextAnimalNum;
         //NextAnimalNum = typeNum;
 
@@ -247,10 +247,13 @@ public class PoolManager : MonoBehaviour
 
     public void animalclick()
     {
-        Vector3 mPosition = Input.mousePosition;
-        Vector3 target = Camera.main.ScreenToWorldPoint(mPosition);
+        if(nowAnimal == null)
+        {
+            Vector3 mPosition = Input.mousePosition;
+            Vector3 target = Camera.main.ScreenToWorldPoint(mPosition);
 
-        Instantiate(prefabs[AnimalNum], target, Quaternion.identity);
+            nowAnimal = Instantiate(prefabs[AnimalNum], target, Quaternion.identity);
+        }
 
     }
 

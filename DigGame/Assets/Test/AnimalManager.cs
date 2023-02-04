@@ -10,6 +10,7 @@ public class AnimalManager : MonoBehaviour
     private bool _crashed, _clicked;
     public int ID;
     private List<Vector2Int> _vectorList = new();
+    public int point;
 
     private void Awake()
     {
@@ -35,10 +36,15 @@ public class AnimalManager : MonoBehaviour
         {
             transform.position = _originalPosition;
             _crashed = false;
+            PoolManager.instance.nowAnimal = null;
+
+            Destroy(this);
         }
         else if (!_crashed && !_clicked)
         {
             HouseManager.AddHouse(_vectorList);
+            GameManager.instance.AddScore(point);
+            GameManager.instance.killCnt++;
             this.GetComponent<PolygonCollider2D>().enabled = false;
             transform.GetChild(0).gameObject.SetActive(true);
             GetComponent<SpriteRenderer>().enabled = false;

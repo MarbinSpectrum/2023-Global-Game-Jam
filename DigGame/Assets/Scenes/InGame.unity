@@ -2790,7 +2790,7 @@ MonoBehaviour:
   poolManager: {fileID: 707749001}
   isGameover: 0
   endObj: {fileID: 1663886591}
-  startTime: 23
+  startTime: 200
   curTime: 0
   timeStop: 0
   score: 0

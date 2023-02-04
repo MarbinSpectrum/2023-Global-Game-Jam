@@ -50,20 +50,20 @@ public class Mole : MonoBehaviour
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public IEnumerator runDigMole(List<Vector2Int> pRoutes)
     {
-        CreateTileMap tileMap = CreateTileMap.instance;
+        TileManager tileManager = TileManager.instance;
 
         foreach (Vector2Int movePos in pRoutes)
         {
-            bool isBlock = tileMap.IsBlock(movePos.x, movePos.y); //해당위치에 블록이 있는지 검사한다.
+            bool isBlock = tileManager.IsBlock(movePos.x, movePos.y); //해당위치에 블록이 있는지 검사한다.
             bool dig = false;
             if(isBlock)
             {
                 //해당 위치에 블록이 존재한다. 블록을 판다.
-                tileMap.DigBlock(movePos.x, movePos.y);
+                tileManager.DigBlock(movePos.x, movePos.y);
                 dig = true;
             }
 
-            bool rCheck = tileMap.IsBlock(movePos.x, movePos.y); //다시한번 해당위치에 블록이 있는지 검사한다.
+            bool rCheck = tileManager.IsBlock(movePos.x, movePos.y); //다시한번 해당위치에 블록이 있는지 검사한다.
 
             //현재 좌표와 이동할 좌표를 이용해서 이동할 방향을 구한다.
             if(pos.x + 1 == movePos.x)
@@ -94,11 +94,9 @@ public class Mole : MonoBehaviour
             }
             else
             {
-                //해당위치에 블록이 존재하지 않는다.
-                //해당위치로 이동한다.
-
                 switch(nowDic)
                 {
+                    //방향에 따른 애니메이션을 적용한다.
                     case Direction.Up:
                         if (nowAni != "UpDown")
                         {
@@ -133,6 +131,8 @@ public class Mole : MonoBehaviour
                         break;
                 }
 
+                //해당위치에 블록이 존재하지 않는다.
+                //해당위치로 이동한다.
                 yield return MyLib.Action2D.MoveTo(transform, new Vector3(movePos.x, movePos.y, 0), moveDuration);
                 pos = movePos;
 
@@ -148,6 +148,9 @@ public class Mole : MonoBehaviour
         yield break;
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// : 현재 애니메이션 이름을 등록한다.
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void SetAniName(string pAniName)
     {
         nowAni = pAniName;
@@ -166,13 +169,13 @@ public class Mole : MonoBehaviour
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     private void Update()
     {
-        if(Input.GetMouseButton(0) && movePlayer == false)
-        {
-            movePlayer = true;
-            Vector3 mousePos = Input.mousePosition;
-            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-            StartCoroutine(runDigMole(new Vector2Int(Mathf.FloorToInt(mousePos.x), Mathf.FloorToInt(mousePos.y))));
-        }
+        //if(Input.GetMouseButton(0) && movePlayer == false)
+        //{
+        //    movePlayer = true;
+        //    Vector3 mousePos = Input.mousePosition;
+        //    mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+        //    StartCoroutine(runDigMole(new Vector2Int(Mathf.FloorToInt(mousePos.x), Mathf.FloorToInt(mousePos.y))));
+        //}
 
         if (movePlayer == false)
         {
@@ -185,6 +188,10 @@ public class Mole : MonoBehaviour
             }         
             else if (nowAni != "Idle" && nowDic != Direction.Down)
             {
+                //아무것도 작동안하고 있는 상태이며
+                //아래를 보고 있는 상태가 아니다.
+
+                //기본 동작자세로 돌아간다.
                 animator.SetTrigger("Idle");
                 spriteRenderer.flipX = false;
                 spriteRenderer.flipY = false;

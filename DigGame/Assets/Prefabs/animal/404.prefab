@@ -73,8 +73,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c36d0921a6113442f808fdbc646f2fcc, type: 3}
+  m_SortingOrder: 40
+  m_Sprite: {fileID: 21300000, guid: d86749f55f78b614189a48bc498a5af5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -94,12 +94,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8444808390583008893}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c5c90c4b9fdc4c788f1bd8313506249, type: 3}
+  m_Script: {fileID: 11500000, guid: b610a8e094e5b614391968e1710dd0db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dragging: 0
-  _placed: 0
+  _clicked: 1
   type: 3
-  ID: 401
+  ID: 404
   point: 4
-  Dialogue: "\uACE0\uAE30 \uC870\uC544!"
+  Dialogue: "\uACE0\uAE30\uAC00 \uCABC\uC544"

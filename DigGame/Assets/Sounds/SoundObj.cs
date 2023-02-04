@@ -5,7 +5,7 @@ using UnityEngine;
 public class SoundObj : MonoBehaviour
 {
     [SerializeField]
-    private AudioSource sound;
+    private AudioClip sound;
     [SerializeField]
     private bool playOnEable;
 

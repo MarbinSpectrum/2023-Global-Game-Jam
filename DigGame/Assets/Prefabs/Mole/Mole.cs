@@ -10,6 +10,8 @@ using UnityEngine;
 public class Mole : MonoBehaviour
 {
     private bool movePlayer;
+    private string nowAni = "Idle";
+    private Direction nowDic = Direction.Null;
 
     [SerializeField]
     private Vector2Int pos;
@@ -39,11 +41,7 @@ public class Mole : MonoBehaviour
         yield return runDigMole(routes);
 
         //이동이 끝났다는것을 체크한다.
-        movePlayer = false;
-
-        animator.SetTrigger("Idle");
-        spriteRenderer.flipX = false;
-        spriteRenderer.flipY = false;
+        movePlayer = false;      
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -67,22 +65,22 @@ public class Mole : MonoBehaviour
 
             bool rCheck = tileMap.IsBlock(movePos.x, movePos.y); //다시한번 해당위치에 블록이 있는지 검사한다.
 
-            Direction direction = Direction.Null;
+            //현재 좌표와 이동할 좌표를 이용해서 이동할 방향을 구한다.
             if(pos.x + 1 == movePos.x)
             {
-                direction = Direction.Right;
+                nowDic = Direction.Right;
             }
             else if (pos.x - 1 == movePos.x)
             {
-                direction = Direction.Left;
+                nowDic = Direction.Left;
             }
             else if (pos.y + 1 == movePos.y)
             {
-                direction = Direction.Up;
+                nowDic = Direction.Up;
             }
             else if (pos.y - 1 == movePos.y)
             {
-                direction = Direction.Down;
+                nowDic = Direction.Down;
             }
 
             if (rCheck)
@@ -99,26 +97,37 @@ public class Mole : MonoBehaviour
                 //해당위치에 블록이 존재하지 않는다.
                 //해당위치로 이동한다.
 
-                switch(direction)
+                switch(nowDic)
                 {
                     case Direction.Up:
-                        animator.SetTrigger("UpDown");
+                        if (nowAni != "UpDown")
+                        {
+                            animator.SetTrigger("UpDown");
+                        }
                         spriteRenderer.flipX = false;
                         spriteRenderer.flipY = false;
                         break;
                     case Direction.Down:
-                        animator.SetTrigger("UpDown");
+                        if (nowAni != "UpDown")
+                        {
+                            animator.SetTrigger("UpDown");
+                        }
                         spriteRenderer.flipX = false;
                         spriteRenderer.flipY = true;
                         break;
                     case Direction.Left:
-                        animator.SetTrigger("Side");
+                        if (nowAni != "Side")
+                        {
+                            animator.SetTrigger("Side");
+                        }
                         spriteRenderer.flipX = true;
                         spriteRenderer.flipY = false;
                         break;
-
                     case Direction.Right:
-                        animator.SetTrigger("Side");
+                        if (nowAni != "Side")
+                        {
+                            animator.SetTrigger("Side");
+                        }
                         spriteRenderer.flipX = false;
                         spriteRenderer.flipY = false;
                         break;
@@ -137,6 +146,11 @@ public class Mole : MonoBehaviour
         }
 
         yield break;
+    }
+
+    public void SetAniName(string pAniName)
+    {
+        nowAni = pAniName;
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -162,25 +176,18 @@ public class Mole : MonoBehaviour
 
         if (movePlayer == false)
         {
-            if (Input.GetKey(KeyCode.UpArrow))
+            int dicX = (int)Input.GetAxisRaw("Horizontal");
+            int dicY = (int)Input.GetAxisRaw("Vertical");
+            if (dicX != 0 || dicY != 0)
             {
                 movePlayer = true;
-                StartCoroutine(runDigMole(new Vector2Int(pos.x, pos.y + 1)));
-            }
-            else if (Input.GetKey(KeyCode.DownArrow))
+                StartCoroutine(runDigMole(new Vector2Int(pos.x + dicX, pos.y + dicY)));
+            }         
+            else if (nowAni != "Idle" && nowDic != Direction.Down)
             {
-                movePlayer = true;
-                StartCoroutine(runDigMole(new Vector2Int(pos.x, pos.y - 1)));
-            }
-            else if (Input.GetKey(KeyCode.LeftArrow))
-            {
-                movePlayer = true;
-                StartCoroutine(runDigMole(new Vector2Int(pos.x - 1, pos.y)));
-            }
-            else if (Input.GetKey(KeyCode.RightArrow))
-            {
-                movePlayer = true;
-                StartCoroutine(runDigMole(new Vector2Int(pos.x + 1, pos.y)));
+                animator.SetTrigger("Idle");
+                spriteRenderer.flipX = false;
+                spriteRenderer.flipY = false;
             }
         }
     }

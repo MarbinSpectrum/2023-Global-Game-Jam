@@ -7,16 +7,16 @@ public class Monster_AStar
     ////////////////////////////////////////////////////////////////////////////////
     /// : pFrom에서 pTo로 이동하는 경로를 구한다.
     ////////////////////////////////////////////////////////////////////////////////
-    public static List<Vector2Int> AstartRoute(Vector2Int pFrom, Vector2Int pTo, int[,] pMoveCost)
+    public static List<Vector2Int> AstartRoute(Vector2Int pFrom, Vector2Int pTo, int pW, int pH)
     {
+        CreateTileObjs createTileObjs = CreateTileObjs.instance;
+
         //4방향
         int[,] offset = { { 0, 1 }, { 0, -1 }, { -1, 0 }, { 1, 0 } };
-        int arrayW = pMoveCost.GetLength(0);
-        int arrayH = pMoveCost.GetLength(1);
-        bool[,] isClose = new bool[arrayW, arrayH];
+        HashSet<Vector2Int> isClose = new HashSet<Vector2Int>();
 
         List<Vector2Int> route = null;
-        Vector2Int[,] parent = new Vector2Int[arrayW, arrayH];
+        Dictionary<Vector2Int, Vector2Int> parent = new Dictionary<Vector2Int, Vector2Int>();
 
         PriorityQueue<Algorithm.AstarNode> pq = new PriorityQueue<Algorithm.AstarNode>(); //열린리스트
         pq.Push(new Algorithm.AstarNode(Mathf.Abs(pFrom.x - pTo.x) + Mathf.Abs(pFrom.y - pTo.y), 0, pFrom, pFrom));
@@ -26,12 +26,12 @@ public class Monster_AStar
         while (pq.Count() > 0)
         {
             Algorithm.AstarNode node = pq.Pop();
-            if (isClose[node.pos.x, node.pos.y])
+            if (isClose.Contains(node.pos))
                 continue;
 
-            isClose[node.pos.x, node.pos.y] = true;
+            isClose.Add(node.pos);
 
-            parent[node.pos.x, node.pos.y] = node.parents;
+            parent[node.pos] = node.parents;
 
             if (node.pos.x == pTo.x && node.pos.y == pTo.y)
             {
@@ -43,13 +43,23 @@ public class Monster_AStar
             {
                 int ax = node.pos.x + offset[i, 0];
                 int ay = node.pos.y + offset[i, 1];
-                if (ax < 0 || ay < 0 || ax >= arrayW || ay >= arrayH)
+                if (ax < pFrom.x - pW || ay < pFrom.y - pH || ax >= pFrom.x + pW || ay >= pFrom.y + pH)
                     continue;
 
-                if (isClose[ax, ay])
+                if (isClose.Contains(new Vector2Int(ax,ay)))
                     continue;
 
-                float g = node.g + pMoveCost[ax, ay];
+                TileType tileType = createTileObjs.GetTile(ax, ay);
+
+                int cost = 1;
+                switch (tileType)
+                {
+                    case TileType.Ground:
+                        cost = 4;
+                        break;
+                }
+
+                float g = node.g + cost;
                 float h = 10 * (Mathf.Abs(ax - pTo.x) + Mathf.Abs(ay - pTo.y));
 
                 pq.Push(new Algorithm.AstarNode(g + h, g, new Vector2Int(ax, ay), node.pos)); //parent 추가
@@ -67,9 +77,10 @@ public class Monster_AStar
                 route.Add(new Vector2Int(ax, ay));
                 int bx = ax;
                 int by = ay;
-                ax = parent[bx, by].x;
-                ay = parent[bx, by].y;
+                ax = parent[new Vector2Int(bx, by)].x;
+                ay = parent[new Vector2Int(bx, by)].y;
             }
+            route.Reverse();
         }
 
         return route;

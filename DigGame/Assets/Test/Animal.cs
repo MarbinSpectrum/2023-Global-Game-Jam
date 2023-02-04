@@ -12,36 +12,40 @@ public class Animal : MonoBehaviour
     private void Awake()
     {
         _originalPosition = transform.position;
-        Debug.Log(this.name);
-        _changeSprite = Resources.Load<Sprite>($"Animal/{this.name}");
+        var removedName = this.name.Replace("(Clone)", "");
+        _changeSprite = Resources.Load<Sprite>($"Animal/{removedName}");
     }
 
     void Update()
     {
-        //if (!_dragging) return;
-        //if (_placed) return;
-
         var mousePosition = GetMousePos();
 
         if (_clicked)
         {
-            transform.position = mousePosition;
+            transform.position = mousePosition + new Vector2(0.5f, 0.5f);
         }
     }
 
     void OnMouseDown()
     {
-        //_dragging = true;
         _clicked = !_clicked;
-        //_offset = GetMousePos() - (Vector2)transform.position;
     }
 
     void OnMouseUp()
     {
         _dragging = false;
-        if (!_clicked && !_crashed)
+        var v2 = new Vector2(this.transform.position.x, this.transform.position.y);
+        Vector2Int v2i;
+        v2i = new Vector2Int((int)v2.x, (int)v2.y);
+        if (!_clicked && !_crashed && !HouseManager.CheckHouse(v2i))
         {
             this.GetComponent<SpriteRenderer>().sprite = _changeSprite;
+            HouseManager.AddHouse(v2i);
+            Destroy(this.GetComponent<BoxCollider2D>());
+        }
+        else if (HouseManager.CheckHouse(v2i))
+        {
+            transform.position = _originalPosition;
         }
     }
 
@@ -61,7 +65,7 @@ public class Animal : MonoBehaviour
 
     Vector2 GetMousePos()
     {
-        Vector3 mousePos = Input.mousePosition; 
+        Vector3 mousePos = Input.mousePosition;
         mousePos = Camera.main.ScreenToWorldPoint(mousePos);
         Vector2Int pos = new Vector2Int(Mathf.FloorToInt(mousePos.x), Mathf.FloorToInt(mousePos.y));
         return pos;

@@ -5,17 +5,26 @@ using UnityEngine.Tilemaps;
 
 public class TileGroup : MonoBehaviour
 {
-    public TileType tileType;
-    public TileBase bodyTile;
-    public List<TileBase> outline = new List<TileBase>();
+    protected TileType tileType;
 
     [SerializeField]
-    private TileBody tileBody;
+    private TileBase bodyTile;
+    [SerializeField]
+    private List<TileBase> outline = new List<TileBase>();
+
+    [SerializeField]
+    protected TileBody tileBody;
+
     [SerializeField]
     private TileOutline tileOutline;
-    private HashSet<Vector2Int> tileList = new HashSet<Vector2Int>();
-    private Dictionary<Vector2Int, int> tileLifes = new Dictionary<Vector2Int, int>();              //위치, 타일체력
 
+    protected HashSet<Vector2Int> tileList = new HashSet<Vector2Int>();
+    protected Dictionary<Vector2Int, int> tileLifes = new Dictionary<Vector2Int, int>();              //위치, 타일체력
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// : x,y 위치에 타일을 제거한다.
+    /// : 그후 주변 타일의 이미지들을 갱신해준다.
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void RemoveTile(int x,int y)
     {
         tileBody.SetTile(x, y, null);
@@ -29,16 +38,14 @@ public class TileGroup : MonoBehaviour
             }
         }
 
-        UpdateOutBlock(new Vector2Int(x - 1, y));
-        UpdateOutBlock(new Vector2Int(x + 1, y));
-        UpdateOutBlock(new Vector2Int(x - 1, y - 1));
-        UpdateOutBlock(new Vector2Int(x, y - 1));
-        UpdateOutBlock(new Vector2Int(x + 1, y - 1));
-        UpdateOutBlock(new Vector2Int(x - 1, y + 1));
-        UpdateOutBlock(new Vector2Int(x, y + 1));
-        UpdateOutBlock(new Vector2Int(x + 1, y + 1));
+        for(int i = -1; i <= 1; i++)
+            for (int j = -1; j <= 1; j++)
+                UpdateOutBlock(new Vector2Int(x + i, y + j));
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// : x,y 위치의 가장자리 블록을 생성해준다.
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void UpdateOutBlock(Vector2Int pos)
     {
         Vector2Int newPos = new Vector2Int(pos.x * 2, pos.y * 2);
@@ -221,6 +228,9 @@ public class TileGroup : MonoBehaviour
         }
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// : pos위치에 타일이 있는가를 반환한다.
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public bool IsTile(Vector2Int pos)
     {
         if (tileList.Contains(pos))
@@ -228,10 +238,14 @@ public class TileGroup : MonoBehaviour
         return false;
     }
 
-    public void SetTile(List<Vector2Int> pPosList,TileType pTileType)
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// : pPosList의 좌표데이터 타일을 생성한다.
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public virtual void SetTile(List<Vector2Int> pPosList,TileType pTileType)
     {
         tileType = pTileType;
 
+        //해당타일의 종류에 따라서 체력을 결정해준다.
         int life = 1;
         switch (tileType)
         {
@@ -242,30 +256,41 @@ public class TileGroup : MonoBehaviour
                 life = 4;
                 break;
             case TileType.DarkGound:
-                life = 8;
+                life = 16;
+                break;
+            case TileType.Gravel:
+                life = int.MaxValue;
                 break;
 
         }
 
         foreach (Vector2Int pos in pPosList)
         {
+            //타일의 좌표에 체력값을 등록해준다.
             tileLifes[pos] = life;
         }
 
 
         tileList.Clear();
         foreach (Vector2Int pos in pPosList)
+        {
+            //타일목록에 등록해준다.
             tileList.Add(pos);
+        }
 
 
         foreach (Vector2Int pos in tileList)
         {
+            //메인블록과 가장자리 블록을 생성해준다.
             tileBody.SetTile(pos.x, pos.y, bodyTile);
             UpdateOutBlock(pos);
         }
     }
 
-    public void DigLife(Vector2Int pos)
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// : pos위치의 블록을 캔다.
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public virtual void DigTile(Vector2Int pos)
     {
         if (tileLifes.ContainsKey(pos) == false)
         {

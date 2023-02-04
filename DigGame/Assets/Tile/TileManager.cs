@@ -21,8 +21,11 @@ public class TileManager : FieldObjectSingleton<TileManager>
         {
             TileType tileType = tileListPair.Key;
             List<Vector2Int> posList = tileListPair.Value;
+            if(tileGroups.ContainsKey(tileType))
             tileGroups[tileType].SetTile(posList, tileType);
         }
+
+
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -30,6 +33,11 @@ public class TileManager : FieldObjectSingleton<TileManager>
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public TileType GetTile(int x, int y)
     {
+        if(tileGroups.ContainsKey(TileType.Obstacle))
+        {
+            if (tileGroups[TileType.Obstacle].IsTile(new Vector2Int(x, y)))
+                return TileType.Obstacle;
+        }    
         foreach (KeyValuePair<TileType, TileGroup> tileGroupPair in tileGroups)
         {
             if (tileGroupPair.Value.IsTile(new Vector2Int(x, y)))
@@ -62,6 +70,6 @@ public class TileManager : FieldObjectSingleton<TileManager>
     {
         Vector2Int pos = new Vector2Int(x, y);
         TileType tileType = GetTile(x, y);
-        tileGroups[tileType].RemoveTile(pos.x, pos.y);
+        tileGroups[tileType].DigTile(pos);
     }
 }

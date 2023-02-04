@@ -2,17 +2,26 @@ using MyLib;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static MyLib.Algorithm;
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// : 두더지 이동로직이 구현되어있다.
+/// : 클릭한위치로 이동하거나 방향키로 누른곳으로 이동한다.
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 public class Mole : MonoBehaviour
 {
-    private Vector2Int pos;
     private bool movePlayer;
 
+    [SerializeField]
+    private Vector2Int pos;
     [SerializeField]
     private float moveDuration;
     [SerializeField]
     private float digDuration;
+
+    [SerializeField]
+    private Animator animator;
+    [SerializeField]
+    private SpriteRenderer spriteRenderer;
 
     const int routeW = 7;
     const int routeH = 7;
@@ -31,6 +40,10 @@ public class Mole : MonoBehaviour
 
         //이동이 끝났다는것을 체크한다.
         movePlayer = false;
+
+        animator.SetTrigger("Idle");
+        spriteRenderer.flipX = false;
+        spriteRenderer.flipY = false;
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -39,18 +52,38 @@ public class Mole : MonoBehaviour
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public IEnumerator runDigMole(List<Vector2Int> pRoutes)
     {
+        CreateTileMap tileMap = CreateTileMap.instance;
+
         foreach (Vector2Int movePos in pRoutes)
         {
-            bool isBlock = CreateTileObjs.instance.IsBlock(movePos.x, movePos.y); //해당위치에 블록이 있는지 검사한다.
+            bool isBlock = tileMap.IsBlock(movePos.x, movePos.y); //해당위치에 블록이 있는지 검사한다.
             bool dig = false;
             if(isBlock)
             {
                 //해당 위치에 블록이 존재한다. 블록을 판다.
-                CreateTileObjs.instance.DigTile(movePos.x, movePos.y);
+                tileMap.DigBlock(movePos.x, movePos.y);
                 dig = true;
             }
 
-            bool rCheck = CreateTileObjs.instance.IsBlock(movePos.x, movePos.y); //다시한번 해당위치에 블록이 있는지 검사한다.
+            bool rCheck = tileMap.IsBlock(movePos.x, movePos.y); //다시한번 해당위치에 블록이 있는지 검사한다.
+
+            Direction direction = Direction.Null;
+            if(pos.x + 1 == movePos.x)
+            {
+                direction = Direction.Right;
+            }
+            else if (pos.x - 1 == movePos.x)
+            {
+                direction = Direction.Left;
+            }
+            else if (pos.y + 1 == movePos.y)
+            {
+                direction = Direction.Up;
+            }
+            else if (pos.y - 1 == movePos.y)
+            {
+                direction = Direction.Down;
+            }
 
             if (rCheck)
             {
@@ -65,6 +98,32 @@ public class Mole : MonoBehaviour
             {
                 //해당위치에 블록이 존재하지 않는다.
                 //해당위치로 이동한다.
+
+                switch(direction)
+                {
+                    case Direction.Up:
+                        animator.SetTrigger("UpDown");
+                        spriteRenderer.flipX = false;
+                        spriteRenderer.flipY = false;
+                        break;
+                    case Direction.Down:
+                        animator.SetTrigger("UpDown");
+                        spriteRenderer.flipX = false;
+                        spriteRenderer.flipY = true;
+                        break;
+                    case Direction.Left:
+                        animator.SetTrigger("Side");
+                        spriteRenderer.flipX = true;
+                        spriteRenderer.flipY = false;
+                        break;
+
+                    case Direction.Right:
+                        animator.SetTrigger("Side");
+                        spriteRenderer.flipX = false;
+                        spriteRenderer.flipY = false;
+                        break;
+                }
+
                 yield return MyLib.Action2D.MoveTo(transform, new Vector3(movePos.x, movePos.y, 0), moveDuration);
                 pos = movePos;
 
@@ -74,16 +133,26 @@ public class Mole : MonoBehaviour
                     //이동을 중지한다.
                     yield break;
                 }
-
             }
         }
 
         yield break;
     }
 
-    public void Update()
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// : Start
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    private void Start()
     {
-        if(Input.GetMouseButtonDown(0) && movePlayer == false)
+        transform.position = new Vector3(pos.x, pos.y, 0);
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /// : Update
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    private void Update()
+    {
+        if(Input.GetMouseButton(0) && movePlayer == false)
         {
             movePlayer = true;
             Vector3 mousePos = Input.mousePosition;

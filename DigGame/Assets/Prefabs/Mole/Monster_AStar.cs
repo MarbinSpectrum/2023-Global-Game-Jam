@@ -9,7 +9,7 @@ public class Monster_AStar
     ////////////////////////////////////////////////////////////////////////////////
     public static List<Vector2Int> AstartRoute(Vector2Int pFrom, Vector2Int pTo, int pW, int pH)
     {
-        CreateTileObjs createTileObjs = CreateTileObjs.instance;
+        CreateTileMap tileMap = CreateTileMap.instance;
 
         //4πÊ«‚
         int[,] offset = { { 0, 1 }, { 0, -1 }, { -1, 0 }, { 1, 0 } };
@@ -49,13 +49,19 @@ public class Monster_AStar
                 if (isClose.Contains(new Vector2Int(ax,ay)))
                     continue;
 
-                TileType tileType = createTileObjs.GetTile(ax, ay);
+                TileType tileType = tileMap.GetTile(ax, ay);
 
                 int cost = 1;
                 switch (tileType)
                 {
+                    case TileType.Sand:
+                        cost = 2;
+                        break;
                     case TileType.Ground:
                         cost = 4;
+                        break;
+                    case TileType.DarkGound:
+                        cost = 8;
                         break;
                 }
 

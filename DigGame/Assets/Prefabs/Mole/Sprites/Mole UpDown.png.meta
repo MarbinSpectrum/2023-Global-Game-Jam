@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ae3b2c10f8ab0be4a81b0dc90c55b792
+guid: 2378dc26e2f41ce4d8d985b6675ed0af
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Mole Idle_0
+      name: Mole UpDown_0
       rect:
         serializedVersion: 2
         x: 0
@@ -125,20 +125,20 @@ TextureImporter:
         width: 200
         height: 200
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01806111f344a5b4eb29cb4930dadcff
-      internalID: 1618886138
+      spriteID: 336acb9048ca4c04f9c418db6c61f96b
+      internalID: -1515246706
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mole Idle_1
+      name: Mole UpDown_1
       rect:
         serializedVersion: 2
         x: 200
@@ -146,20 +146,20 @@ TextureImporter:
         width: 200
         height: 200
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 760f7cf7a389d5040b4fce82f618e5c3
-      internalID: -520699530
+      spriteID: ac8d7a29887503d4db5a5e653b0328e3
+      internalID: 229594560
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mole Idle_2
+      name: Mole UpDown_2
       rect:
         serializedVersion: 2
         x: 400
@@ -167,20 +167,20 @@ TextureImporter:
         width: 200
         height: 200
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1fcf706b0f237754288ec66fcc7a95b6
-      internalID: -1122501213
+      spriteID: 8d58643e14856974bb2e4494a1ea338f
+      internalID: 613953244
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mole Idle_3
+      name: Mole UpDown_3
       rect:
         serializedVersion: 2
         x: 600
@@ -188,14 +188,14 @@ TextureImporter:
         width: 200
         height: 200
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6ce24830c55039849811ba5db95ff470
-      internalID: 1787693916
+      spriteID: 0e085db1d1d8bdc44b04555f858f4075
+      internalID: 1710163025
       vertices: []
       indices: 
       edges: []
@@ -211,10 +211,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Mole Idle_3: 1787693916
-      Mole Idle_0: 1618886138
-      Mole Idle_1: -520699530
-      Mole Idle_2: -1122501213
+      Mole UpDown_2: 613953244
+      Mole UpDown_0: -1515246706
+      Mole UpDown_3: 1710163025
+      Mole UpDown_1: 229594560
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

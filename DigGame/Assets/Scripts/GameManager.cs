@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
 
+    public Spawner spawner;
     public static GameManager instance; // 싱글톤을 할당할 전역 변수
 
     public bool isGameover = false; // 게임 오버 상태
@@ -20,6 +21,8 @@ public class GameManager : MonoBehaviour
     [Header("Score System")]
     public Text text_score;
     public int score;
+
+    public Text DialogueText;
 
 
 
@@ -37,9 +40,10 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        // 게임 오버 상태에서 게임을 재시작할 수 있게 하는 처리
-        TimeSystem();
-        ScoreSystem();
+
+        //TimeSystem();
+        //ScoreSystem();
+        DialogueSystem();
     }
 
     // 점수를 증가시키는 메서드
@@ -80,6 +84,15 @@ public class GameManager : MonoBehaviour
     {
         text_score.text = score.ToString();
     }
+
+
+    public void DialogueSystem()
+    {
+        DialogueText.text = spawner.DialogueNow;
+    }
+
+
+
 
 }
 

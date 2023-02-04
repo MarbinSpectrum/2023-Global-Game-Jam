@@ -62,6 +62,11 @@ public class TileManager : FieldObjectSingleton<TileManager>
     {
         Vector2Int pos = new Vector2Int(x, y);
         TileType tileType = GetTile(x, y);
-        tileGroups[tileType].RemoveTile(pos.x, pos.y);
+        tileGroups[tileType].DigTile(pos);
+    }
+
+    public void AddDontMovePos(int x,int y)
+    {
+
     }
 }

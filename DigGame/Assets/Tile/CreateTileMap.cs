@@ -22,13 +22,22 @@ public class CreateTileMap : MonoBehaviour
         Dictionary<TileType, List<Vector2Int>> tileList = new Dictionary<TileType, List<Vector2Int>>();
         for(int y = 0; y > -h; y--)
         {
-            for (int x = -5+y; x <= 5-y; x++)
+
+            for (int x = -5-h; x <= 5+h; x++)
             {
                 TileType tileType = TileType.Null;
-                if (y > -h / 2)
-                    tileType = TileType.Sand;
+
+                if (-5 + y / 2 <= x && x <= 5 - y / 2)
+                {
+                    if (y > -h * 0.3f)
+                        tileType = TileType.Sand;
+                    else if (y > -h * 0.6f)
+                        tileType = TileType.Ground;
+                    else
+                        tileType = TileType.DarkGound;
+                }
                 else
-                    tileType = TileType.Ground;
+                    tileType = TileType.Gravel;
 
                 if (tileList.ContainsKey(tileType) == false)
                     tileList[tileType] = new List<Vector2Int>();

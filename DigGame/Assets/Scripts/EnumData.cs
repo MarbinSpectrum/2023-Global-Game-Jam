@@ -9,7 +9,7 @@ public enum TileType
     Sand = 50,
     Ground = 100,
     DarkGound = 200,
-
+    Gravel = 300,
 
 }
 

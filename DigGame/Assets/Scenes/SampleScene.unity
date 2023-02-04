@@ -176,7 +176,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8
+  orthographic size: 4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -234,10 +234,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 572697589}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5db10bd0a40b39c48bc86d5f61f667c6, type: 3}
+  m_Script: {fileID: 11500000, guid: 164a576e338268d4990234b76d48561d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveDuration: 0.1
+  moveDuration: 0.2
 --- !u!212 &572697591
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -279,7 +279,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e7099f87561417f4ea28c82a20d2d20c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5c44e7b1b8cfb594391e1e6a3e798d9d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -481,7 +481,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 811522134}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1997ea6cd6cf5fa40b768e7715d15c3b, type: 3}
+  m_Script: {fileID: 11500000, guid: bae909c96884ed04985000af55160909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   serializationData:
@@ -494,7 +494,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   tilemap: {fileID: 778038663}
-  tileSand: {fileID: 11400000, guid: 234894c615585144eb7cfd3c06740ad9, type: 2}
-  tileDirt0: {fileID: 11400000, guid: 57e739f2bffac694da9bc2c783bf8815, type: 2}
-  tileDirt1: {fileID: 11400000, guid: e68123006faac354a84c3e83bc67cd4a, type: 2}
+  tileSand: {fileID: 11400000, guid: 7494bc1778f5f044bbb52bef5fe8e49c, type: 2}
+  tileDirt0: {fileID: 11400000, guid: 9208bc55f40bf034881f04a5fa7d018f, type: 2}
+  tileDirt1: {fileID: 11400000, guid: 1ecee6ad2488c614cb0e902bcc449986, type: 2}
   h: 100

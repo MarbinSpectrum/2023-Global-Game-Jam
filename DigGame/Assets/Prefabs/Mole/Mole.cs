@@ -21,6 +21,12 @@ public class Mole : MonoBehaviour
     private float digDuration;
 
     [SerializeField]
+    private SoundObj snowSE;
+    [SerializeField]
+    private SoundObj digSE;
+
+
+    [SerializeField]
     private Animator animator;
     [SerializeField]
     private SpriteRenderer spriteRenderer;
@@ -96,6 +102,7 @@ public class Mole : MonoBehaviour
                 nowDic = Direction.Down;
             }
 
+
             if (rCheck)
             {
                 //아직도 블록이 존재한다.
@@ -144,6 +151,14 @@ public class Mole : MonoBehaviour
                         break;
                 }
 
+                if (pos.y == 1)
+                {
+                    snowSE.RunSE();
+                }
+                else
+                {
+                    digSE.RunSE();
+                }
                 //해당위치에 블록이 존재하지 않는다.
                 //해당위치로 이동한다.
                 yield return MyLib.Action2D.MoveTo(transform, new Vector3(movePos.x, movePos.y, 0), moveDuration);
@@ -182,13 +197,7 @@ public class Mole : MonoBehaviour
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     private void Update()
     {
-        //if(Input.GetMouseButton(0) && movePlayer == false)
-        //{
-        //    movePlayer = true;
-        //    Vector3 mousePos = Input.mousePosition;
-        //    mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-        //    StartCoroutine(runDigMole(new Vector2Int(Mathf.FloorToInt(mousePos.x), Mathf.FloorToInt(mousePos.y))));
-        //}
+        
 
         if (movePlayer == false)
         {
@@ -196,6 +205,9 @@ public class Mole : MonoBehaviour
             int dicY = (int)Input.GetAxisRaw("Vertical");
             if (dicX != 0 || dicY != 0)
             {
+                if (GameManager.instance.isGameover)
+                    return;
+
                 movePlayer = true;
                 StartCoroutine(runDigMole(new Vector2Int(pos.x + dicX, pos.y + dicY)));
             }         

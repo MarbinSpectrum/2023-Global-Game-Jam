@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundObj : MonoBehaviour
+public class BGM_Player : MonoBehaviour
 {
     [SerializeField]
     private AudioClip sound;
@@ -12,11 +12,11 @@ public class SoundObj : MonoBehaviour
     private void OnEnable()
     {
         if (playOnEable)
-            RunSE();
+            RunBGM();
     }
 
-    public void RunSE()
+    public void RunBGM()
     {
-        SoundManager.PlaySE(sound);
+        SoundManager.PlayBGM(sound);
     }
 }

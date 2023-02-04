@@ -2,12 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundManager : DontDestroySingleton<SoundManager>
+public class SoundManager : FieldObjectSingleton<SoundManager>
 {
-    public AudioClip se;
+    public AudioSource se;
+    public AudioSource bgm;
 
-    public static void PlaySE(AudioSource pAudioSource)
+    public static void PlayBGM(AudioClip pAudioClip)
     {
-        pAudioSource.PlayOneShot(instance.se);
+        instance.bgm.clip = pAudioClip;
+        instance.bgm.Play();
+    }
+
+    public static void PlaySE(AudioClip pAudioClip)
+    {
+        instance.se.PlayOneShot(pAudioClip);
     }
 }

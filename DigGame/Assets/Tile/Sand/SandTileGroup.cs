@@ -7,6 +7,8 @@ public class SandTileGroup : TileGroup
 {
     [SerializeField]
     protected TileBase snowTile;
+    [SerializeField]
+    protected TileBase sandBiome;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// : pPosList의 좌표데이터 타일을 생성한다.
@@ -42,7 +44,11 @@ public class SandTileGroup : TileGroup
             }
             else
             {
-                tileBody.SetTile(pos.x, pos.y, bodyTile);
+                int random = Random.Range(0, 100);
+                if(random < 90)
+                    tileBody.SetTile(pos.x, pos.y, bodyTile);
+                else
+                    tileBody.SetTile(pos.x, pos.y, sandBiome);
             }
             UpdateOutBlock(pos);
         }

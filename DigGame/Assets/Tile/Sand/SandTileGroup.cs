@@ -2,29 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using UnityEngine.UIElements;
 
-public class ObstacleTileGroup : TileGroup
+public class SandTileGroup : TileGroup
 {
-
     [SerializeField]
-    public List<TileBase> mainTile;
+    protected TileBase snowTile;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// : pPosList의 좌표데이터 타일을 생성한다.
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public override void SetTile(List<Vector2Int> pPosList, TileType pTileType)
+    public override void SetTile(List<Vector2Int> pPosList,TileType pTileType)
     {
         tileType = pTileType;
 
         //해당타일의 종류에 따라서 체력을 결정해준다.
-        int life = int.MaxValue;
+        int life = 2;
 
         foreach (Vector2Int pos in pPosList)
         {
             //타일의 좌표에 체력값을 등록해준다.
-            for (int j = 0; j < 4; j++)
-                tileLifes[new Vector2Int(pos.x + j / 2, pos.y - j % 2)] = life;
+            tileLifes[pos] = life;
         }
 
 
@@ -32,17 +29,22 @@ public class ObstacleTileGroup : TileGroup
         foreach (Vector2Int pos in pPosList)
         {
             //타일목록에 등록해준다.
-            for (int j = 0; j < 4; j++)
-                tileList.Add(new Vector2Int(pos.x + j / 2, pos.y - j % 2));
+            tileList.Add(pos);
         }
 
 
-        foreach (Vector2Int pos in pPosList)
+        foreach (Vector2Int pos in tileList)
         {
-            //메인블록을 배치
-            for (int j = 0; j < 4; j++)
-                tileBody.SetTile(pos.x + j % 2, pos.y - j / 2, mainTile[j]);
-
+            //메인블록과 가장자리 블록을 생성해준다.
+            if(pos.y == 0)
+            {
+                tileBody.SetTile(pos.x, pos.y, snowTile);
+            }
+            else
+            {
+                tileBody.SetTile(pos.x, pos.y, bodyTile);
+            }
+            UpdateOutBlock(pos);
         }
     }
 }

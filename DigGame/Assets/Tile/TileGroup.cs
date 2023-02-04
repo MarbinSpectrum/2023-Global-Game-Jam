@@ -8,7 +8,7 @@ public class TileGroup : MonoBehaviour
     protected TileType tileType;
 
     [SerializeField]
-    private TileBase bodyTile;
+    protected TileBase bodyTile;
     [SerializeField]
     private List<TileBase> outline = new List<TileBase>();
 
@@ -249,19 +249,12 @@ public class TileGroup : MonoBehaviour
         int life = 1;
         switch (tileType)
         {
-            case TileType.Sand:
-                life = 2;
-                break;
             case TileType.Ground:
                 life = 4;
                 break;
             case TileType.DarkGound:
                 life = 16;
                 break;
-            case TileType.Gravel:
-                life = int.MaxValue;
-                break;
-
         }
 
         foreach (Vector2Int pos in pPosList)

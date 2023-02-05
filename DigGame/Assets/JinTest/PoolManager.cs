@@ -34,12 +34,29 @@ public class PoolManager : FieldObjectSingleton<PoolManager>
 
     public int[] CurAnimal;
 
+    public GameObject btn0;
+    public GameObject btn1;
+
     private void Start()
     {
         AnimalSetting();
     }
 
+    public int passCnt = 3;
+    public void UsePass()
+    {
+        if(passCnt > 0)
+        {
+            passCnt--;
+            AnimalSetting();
+        }
 
+        if(passCnt == 0)
+        {
+            btn0.SetActive(false);
+            btn1.SetActive(true);
+        }
+    }
 
     public void AnimalSetting()
     {

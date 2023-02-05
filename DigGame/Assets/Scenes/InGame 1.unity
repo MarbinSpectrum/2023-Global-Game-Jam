@@ -3425,8 +3425,8 @@ MonoBehaviour:
   startTime: 300
   curTime: 0
   timeStop: 0
-  score: 4
-  killCnt: 4
+  score: 0
+  killCnt: 0
   DialogueText: {fileID: 4483507069608102178}
 --- !u!4 &1191485380
 Transform:

@@ -4,162 +4,163 @@ using UnityEngine;
 
 public class AnimalData : MonoBehaviour
 {
-
-    void CheckAnimalNumber(int animalNumber)
+    public static List<Vector2Int> CheckAnimalNumber(Vector2Int pos, int animalNumber)
     {
+        List<Vector2Int> _vectorList = new List<Vector2Int>();
+        List<Vector2Int> _changeList = new List<Vector2Int>();
         switch (animalNumber)
         {
             case 101:
-                CreateTile(new Vector2(0.0f, 0.0f));
-                CreateTile(new Vector2(0.0f, 1.0f));
+                _vectorList.Add(new Vector2Int(0, 0));
+                _vectorList.Add(new Vector2Int(0, -1));
                 break;
             case 102:
-                CreateTile(new Vector2(0.0f, 0.0f));
-                CreateTile(new Vector2(0.0f, 1.0f));
-                CreateTile(new Vector2(1.0f, 0.0f));
-                CreateTile(new Vector2(1.0f, 1.0f));
+                _vectorList.Add(new Vector2Int(0, 0));
+                _vectorList.Add(new Vector2Int(0, -1));
+                _vectorList.Add(new Vector2Int(-1, 0));
+                _vectorList.Add(new Vector2Int(-1, -1));
                 break;
             case 103:
-                CreateTile(new Vector2(0.0f, 1.0f));
-                CreateTile(new Vector2(0.0f, 2.0f));
-                CreateTile(new Vector2(1.0f, 0.0f));
-                CreateTile(new Vector2(1.0f, 1.0f));
-                CreateTile(new Vector2(1.0f, 2.0f));
-                CreateTile(new Vector2(2.0f, 0.0f));
-                CreateTile(new Vector2(2.0f, 1.0f));
-                CreateTile(new Vector2(2.0f, 2.0f));
+                _vectorList.Add(new Vector2Int(0, 1));
+                _vectorList.Add(new Vector2Int(0, -1));
+                _vectorList.Add(new Vector2Int(0, -2));
+                _vectorList.Add(new Vector2Int(-1, 0));
+                _vectorList.Add(new Vector2Int(-1, -1));
+                _vectorList.Add(new Vector2Int(-1, -2));
+                _vectorList.Add(new Vector2Int(-2, 0));
+                _vectorList.Add(new Vector2Int(-2, -1));
                 break;
             case 201:
-                CreateTile(new Vector2(0.0f, 0.0f));
-                CreateTile(new Vector2(0.0f, 1.0f));
-                CreateTile(new Vector2(1.0f, 0.0f));
-                CreateTile(new Vector2(1.0f, 1.0f));
+                _vectorList.Add(new Vector2Int(0, 0));
+                _vectorList.Add(new Vector2Int(0, -1));
+                _vectorList.Add(new Vector2Int(-1, 0));
+                _vectorList.Add(new Vector2Int(-1, -1));
                 break;
             case 202:
-                CreateTile(new Vector2(0.0f, 0.0f));
-                CreateTile(new Vector2(0.0f, 1.0f));
-                CreateTile(new Vector2(0.0f, 2.0f));
-                CreateTile(new Vector2(1.0f, 0.0f));
-                CreateTile(new Vector2(1.0f, 1.0f));
-                CreateTile(new Vector2(1.0f, 2.0f));
+                _vectorList.Add(new Vector2Int(0, 0));
+                _vectorList.Add(new Vector2Int(0, -1));
+                _vectorList.Add(new Vector2Int(0, -2));
+                _vectorList.Add(new Vector2Int(-1, 0));
+                _vectorList.Add(new Vector2Int(-1, -1));
+                _vectorList.Add(new Vector2Int(-1, -2));
                 break;
             case 203:
-                CreateTile(new Vector2(0.0f, 1.0f));
-                CreateTile(new Vector2(0.0f, 2.0f));
-                CreateTile(new Vector2(1.0f, 0.0f));
-                CreateTile(new Vector2(1.0f, 1.0f));
-                CreateTile(new Vector2(1.0f, 2.0f));
-                CreateTile(new Vector2(2.0f, 0.0f));
-                CreateTile(new Vector2(2.0f, 1.0f));
-                CreateTile(new Vector2(2.0f, 2.0f));
-                CreateTile(new Vector2(3.0f, 0.0f));
-                CreateTile(new Vector2(3.0f, 1.0f));
+                _vectorList.Add(new Vector2Int(-2, 0));
+                _vectorList.Add(new Vector2Int(-1, 0));
+                _vectorList.Add(new Vector2Int(0, 0));
+                _vectorList.Add(new Vector2Int(-2, -1));
+                _vectorList.Add(new Vector2Int(-1, -1));
+                _vectorList.Add(new Vector2Int(0, -1));
+                _vectorList.Add(new Vector2Int(1, -1));
+                _vectorList.Add(new Vector2Int(-1, -2));
+                _vectorList.Add(new Vector2Int(0, -2));
+                _vectorList.Add(new Vector2Int(1, -2));
                 break;
             case 301:
-                CreateTile(new Vector2(0.0f, 0.0f));
-                CreateTile(new Vector2(0.0f, 1.0f));
-                CreateTile(new Vector2(1.0f, 0.0f));
-                CreateTile(new Vector2(1.0f, 1.0f));
-                CreateTile(new Vector2(2.0f, 0.0f));
+                _vectorList.Add(new Vector2Int(-1, 0));
+                _vectorList.Add(new Vector2Int(-1, -1));
+                _vectorList.Add(new Vector2Int(0, 0));
+                _vectorList.Add(new Vector2Int(0, -1));
+                _vectorList.Add(new Vector2Int(1, -1));
                 break;
             case 302:
-                CreateTile(new Vector2(0.0f, 0.0f));
-                CreateTile(new Vector2(0.0f, 1.0f));
-                CreateTile(new Vector2(1.0f, 0.0f));
-                CreateTile(new Vector2(1.0f, 1.0f));
-                CreateTile(new Vector2(1.0f, 2.0f));
-                CreateTile(new Vector2(2.0f, 0.0f));
-                CreateTile(new Vector2(2.0f, 1.0f));
-                CreateTile(new Vector2(2.0f, 2.0f));
-                CreateTile(new Vector2(3.0f, 0.0f));
-                CreateTile(new Vector2(3.0f, 1.0f));
+                _vectorList.Add(new Vector2Int(-1, 0));
+                _vectorList.Add(new Vector2Int(0, 0));
+                _vectorList.Add(new Vector2Int(-2, -1));
+                _vectorList.Add(new Vector2Int(-1, -1));
+                _vectorList.Add(new Vector2Int(0, -1));
+                _vectorList.Add(new Vector2Int(1, -1));
+                _vectorList.Add(new Vector2Int(-2, -2));
+                _vectorList.Add(new Vector2Int(-1, -2));
+                _vectorList.Add(new Vector2Int(0, -2));
+                _vectorList.Add(new Vector2Int(1, -2));
                 break;
             case 404:
-                CreateTile(new Vector2(0.0f, 0.0f));
-                CreateTile(new Vector2(1.0f, 0.0f));
-                CreateTile(new Vector2(1.0f, 1.0f));
-                CreateTile(new Vector2(2.0f, 1.0f));
-                break;
-            case 405:
-                CreateTile(new Vector2(0.0f, 0.0f));
-                CreateTile(new Vector2(1.0f, 0.0f));
-                CreateTile(new Vector2(1.0f, 1.0f));
-                CreateTile(new Vector2(2.0f, 0.0f));
-                CreateTile(new Vector2(2.0f, 1.0f));
-                CreateTile(new Vector2(3.0f, 1.0f));
-                break;
-            case 501:
-                CreateTile(new Vector2(0.0f, 0.0f));
-                CreateTile(new Vector2(0.0f, 1.0f));
-                CreateTile(new Vector2(0.0f, 2.0f));
-                CreateTile(new Vector2(0.0f, 3.0f));
-                CreateTile(new Vector2(1.0f, 0.0f));
-                CreateTile(new Vector2(1.0f, 1.0f));
-                CreateTile(new Vector2(1.0f, 2.0f));
-                CreateTile(new Vector2(1.0f, 3.0f));
-                CreateTile(new Vector2(2.0f, 0.0f));
-                CreateTile(new Vector2(2.0f, 1.0f));
-                CreateTile(new Vector2(2.0f, 2.0f));
-                CreateTile(new Vector2(2.0f, 3.0f));
-                CreateTile(new Vector2(3.0f, 0.0f));
-                CreateTile(new Vector2(3.0f, 1.0f));
-                CreateTile(new Vector2(3.0f, 2.0f));
-                CreateTile(new Vector2(3.0f, 3.0f));
-                CreateTile(new Vector2(4.0f, 0.0f));
-                CreateTile(new Vector2(4.0f, 1.0f));
-                CreateTile(new Vector2(4.0f, 2.0f));
-                CreateTile(new Vector2(4.0f, 3.0f));
-                break;
-            case 601:
-                CreateTile(new Vector2(0.0f, 1.0f));
-                CreateTile(new Vector2(0.0f, 2.0f));
-                CreateTile(new Vector2(0.0f, 3.0f));
-                CreateTile(new Vector2(1.0f, 0.0f));
-                CreateTile(new Vector2(1.0f, 1.0f));
-                CreateTile(new Vector2(1.0f, 3.0f));
-                CreateTile(new Vector2(2.0f, 2.0f));
-                CreateTile(new Vector2(2.0f, 3.0f));
-                CreateTile(new Vector2(3.0f, 1.0f));
-                CreateTile(new Vector2(3.0f, 2.0f));
-                break;
-            case 602:
-                CreateTile(new Vector2(0.0f, 0.0f));
-                CreateTile(new Vector2(0.0f, 1.0f));
-                CreateTile(new Vector2(0.0f, 2.0f));
-                CreateTile(new Vector2(0.0f, 3.0f));
-                CreateTile(new Vector2(1.0f, 0.0f));
-                CreateTile(new Vector2(1.0f, 3.0f));
-                CreateTile(new Vector2(2.0f, 0.0f));
-                CreateTile(new Vector2(3.0f, 0.0f));
-                CreateTile(new Vector2(3.0f, 1.0f));
-                CreateTile(new Vector2(3.0f, 2.0f));
-                CreateTile(new Vector2(3.0f, 3.0f));
-                break;
-            case 603:
-                CreateTile(new Vector2(0.0f, 1.0f));
-                CreateTile(new Vector2(0.0f, 2.0f));
-                CreateTile(new Vector2(0.0f, 3.0f));
-                CreateTile(new Vector2(1.0f, 0.0f));
-                CreateTile(new Vector2(1.0f, 1.0f));
-                CreateTile(new Vector2(1.0f, 3.0f));
-                CreateTile(new Vector2(2.0f, 3.0f));
-                break;
-            case 604:
-                CreateTile(new Vector2(0.0f, 1.0f));
-                CreateTile(new Vector2(0.0f, 2.0f));
-                CreateTile(new Vector2(0.0f, 3.0f));
-                CreateTile(new Vector2(1.0f, 0.0f));
-                CreateTile(new Vector2(1.0f, 3.0f));
-                CreateTile(new Vector2(2.0f, 0.0f));
-                CreateTile(new Vector2(2.0f, 1.0f));
-                CreateTile(new Vector2(2.0f, 2.0f));
-                CreateTile(new Vector2(2.0f, 3.0f));
+                _vectorList.Add(new Vector2Int(-1, 0));
+                _vectorList.Add(new Vector2Int(0, 0));
+                _vectorList.Add(new Vector2Int(-2, -1));
+                _vectorList.Add(new Vector2Int(-1, -1));
+                break;              
+            case 405:               
+                _vectorList.Add(new Vector2Int(-2, 0));
+                _vectorList.Add(new Vector2Int(-1, 0));
+                _vectorList.Add(new Vector2Int(0, 0));
+                _vectorList.Add(new Vector2Int(-3, -1));
+                _vectorList.Add(new Vector2Int(-2, -1));
+                _vectorList.Add(new Vector2Int(-1, -1));
+                break;              
+            case 501:               
+                _vectorList.Add(new Vector2Int(0, 0));
+                _vectorList.Add(new Vector2Int(0, -1));
+                _vectorList.Add(new Vector2Int(0, -2));
+                _vectorList.Add(new Vector2Int(0, -3));
+                _vectorList.Add(new Vector2Int(-1, 0));
+                _vectorList.Add(new Vector2Int(-1, -1));
+                _vectorList.Add(new Vector2Int(-1, -2));
+                _vectorList.Add(new Vector2Int(-1, -3));
+                _vectorList.Add(new Vector2Int(-2, 0));
+                _vectorList.Add(new Vector2Int(-2, -1));
+                _vectorList.Add(new Vector2Int(-2, -2));
+                _vectorList.Add(new Vector2Int(-2, -3));
+                _vectorList.Add(new Vector2Int(-3, 0));
+                _vectorList.Add(new Vector2Int(-3, -1));
+                _vectorList.Add(new Vector2Int(-3, -2));
+                _vectorList.Add(new Vector2Int(-3, -3));
+                _vectorList.Add(new Vector2Int(-4, 0));
+                _vectorList.Add(new Vector2Int(-4, -1));
+                _vectorList.Add(new Vector2Int(-4, -2));
+                _vectorList.Add(new Vector2Int(-4, -3));
+                break;              
+            case 601:               
+                _vectorList.Add(new Vector2Int(-2, 0));
+                _vectorList.Add(new Vector2Int(-1, 0));
+                _vectorList.Add(new Vector2Int(0, 0));
+                _vectorList.Add(new Vector2Int(-2, -1));
+                _vectorList.Add(new Vector2Int(0, -1));
+                _vectorList.Add(new Vector2Int(1, -1));
+                _vectorList.Add(new Vector2Int(-2, -2));
+                _vectorList.Add(new Vector2Int(-1, -2));
+                _vectorList.Add(new Vector2Int(1, -2));
+                _vectorList.Add(new Vector2Int(-1, -3));
+                break;              
+            case 602:               
+                _vectorList.Add(new Vector2Int(-3, 0));
+                _vectorList.Add(new Vector2Int(-2, 0));
+                _vectorList.Add(new Vector2Int(0, 0));
+                _vectorList.Add(new Vector2Int(-3, -1));
+                _vectorList.Add(new Vector2Int(0, -1));
+                _vectorList.Add(new Vector2Int(-3, -2));
+                _vectorList.Add(new Vector2Int(0, -2));
+                _vectorList.Add(new Vector2Int(-3, -2));
+                _vectorList.Add(new Vector2Int(-2, -3));
+                _vectorList.Add(new Vector2Int(-1, -3));
+                _vectorList.Add(new Vector2Int(0, -3));
+                break;              
+            case 603:               
+                _vectorList.Add(new Vector2Int(0, 0));
+                _vectorList.Add(new Vector2Int(-1, 0));
+                _vectorList.Add(new Vector2Int(-2, 0));
+                _vectorList.Add(new Vector2Int(-2, -1));
+                _vectorList.Add(new Vector2Int(-2, -2));
+                _vectorList.Add(new Vector2Int(-1, -2));
+                _vectorList.Add(new Vector2Int(-1, -3));
+                break;              
+            case 604:               
+                _vectorList.Add(new Vector2Int(-2, 0));
+                _vectorList.Add(new Vector2Int(-1, 0));
+                _vectorList.Add(new Vector2Int(0, 0));
+                _vectorList.Add(new Vector2Int(-2, -1));
+                _vectorList.Add(new Vector2Int(0, -1));
+                _vectorList.Add(new Vector2Int(-2, -2));
+                _vectorList.Add(new Vector2Int(0, -2));
+                _vectorList.Add(new Vector2Int(-1, -3));
+                _vectorList.Add(new Vector2Int(0, -3));
                 break;
         }
-    }
-
-    void CreateTile(Vector2 pos)
-    {
-
+        foreach (var _vector in _vectorList)
+        {
+            _changeList.Add(new Vector2Int(_vector.x + pos.x, _vector.y + pos.y));
+        }
+        return _changeList;
     }
 }

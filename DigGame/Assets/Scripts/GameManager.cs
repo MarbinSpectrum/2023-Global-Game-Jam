@@ -18,7 +18,7 @@ public class GameManager : DontDestroySingleton<GameManager>
 
     [Header("Score System")]
     public int score;
-
+    public int killCnt;
     public Text DialogueText;
 
     private void Start()

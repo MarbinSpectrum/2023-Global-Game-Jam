@@ -25,12 +25,12 @@ public class Spawner : MonoBehaviour
     void Start()
     {
         int StartSetAnimal = Random.Range(0, 12);
-        GameObject animal1 = poolManager.Get(StartSetAnimal);
+        AnimalManager animal1 = poolManager.Get(StartSetAnimal);
         animal1.transform.position = seat[0].transform.position;
 
 
         int StartSetAnima2 = Random.Range(0, 12);
-        GameObject animal2 = poolManager.Get(StartSetAnima2);
+        AnimalManager animal2 = poolManager.Get(StartSetAnima2);
         animal2.transform.position = seat[1].transform.position;
 
     }
@@ -92,7 +92,7 @@ public class Spawner : MonoBehaviour
 
     {
         int num = Random.Range(0, 12);
-        GameObject animal = poolManager.Get(num);
+        AnimalManager animal = poolManager.Get(num);
         animal.transform.position = seat[1].transform.position;
     }
 

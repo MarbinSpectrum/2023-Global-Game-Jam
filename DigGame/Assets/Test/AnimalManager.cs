@@ -47,7 +47,7 @@ public class AnimalManager : MonoBehaviour
             HouseManager.AddHouse(_vectorList);
             GameManager.instance.AddScore(point);
             GameManager.instance.killCnt++;
-            this.GetComponent<PolygonCollider2D>().enabled = false;
+            this.GetComponent<Collider2D>().enabled = false;
             transform.GetChild(0).gameObject.SetActive(true);
             GetComponent<SpriteRenderer>().enabled = false;
 

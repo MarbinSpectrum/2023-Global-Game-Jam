@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
+using UnityEditor.EditorTools;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +14,7 @@ public class Ending : MonoBehaviour
     public Text Count;
 
     public GameManager gameManager;
+    public PoolManager poolManager;
 
 
     public FollowCamera followCamera;
@@ -33,6 +35,8 @@ public class Ending : MonoBehaviour
 
     public SpriteRenderer blueFilter;
 
+   
+
     public void StartEnding()
     {
         StartCoroutine(runStartEnding());
@@ -40,6 +44,12 @@ public class Ending : MonoBehaviour
 
     private IEnumerator runStartEnding()
     {
+        //Destroy(poolManager.nowAnimal);
+       
+        poolManager.nowAnimal.GetComponent<AnimalManager>()._clicked = false;
+        poolManager.nowAnimal.GetComponent<AnimalManager>().Destroy();
+
+
         normalHouse.SetActive(false);
         endingHouse.SetActive(true);
         gameUI.SetActive(false);

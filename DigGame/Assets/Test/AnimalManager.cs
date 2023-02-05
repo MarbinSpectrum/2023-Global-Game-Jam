@@ -30,7 +30,7 @@ public class AnimalManager : MonoBehaviour
         }
     }
 
-    void OnMouseDown()
+    public void OnMouseDown()
     {
         _clicked = !_clicked;
         CheckNullTile();
@@ -56,6 +56,11 @@ public class AnimalManager : MonoBehaviour
 
             PoolManager.instance.AnimalSetting();
         }
+    }
+
+    public void Destroy()
+    {
+        Destroy(gameObject);
     }
 
     private void CheckNullTile()

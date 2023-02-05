@@ -52,6 +52,8 @@ public class AnimalManager : MonoBehaviour
             GetComponent<SpriteRenderer>().enabled = false;
 
             PoolManager.instance.nowAnimal = null;
+
+            PoolManager.instance.AnimalSetting();
         }
     }
 
@@ -62,8 +64,9 @@ public class AnimalManager : MonoBehaviour
 
         foreach (Vector2Int movePos in _vectorList)
         {
+
             bool isBlock = tileManager.IsBlock(movePos.x, movePos.y);
-            if (isBlock || HouseManager.CheckHouse(movePos))
+            if (isBlock || HouseManager.CheckHouse(movePos) || movePos.y >= -5)
             {
                 _crashed = true;
                 break;

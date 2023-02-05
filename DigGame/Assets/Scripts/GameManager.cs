@@ -21,8 +21,9 @@ public class GameManager : DontDestroySingleton<GameManager>
     public int killCnt;
     public Text DialogueText;
 
-    private void Start()
+    public void GameStart()
     {
+        timeStop = false;
         curTime = startTime;
         StartCoroutine(runTimeLogic());
     }

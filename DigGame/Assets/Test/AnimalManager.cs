@@ -50,6 +50,7 @@ public class AnimalManager : MonoBehaviour
             this.GetComponent<Collider2D>().enabled = false;
             transform.GetChild(0).gameObject.SetActive(true);
             GetComponent<SpriteRenderer>().enabled = false;
+            transform.GetChild(1).gameObject.SetActive(false);
 
             PoolManager.instance.nowAnimal = null;
         }

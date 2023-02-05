@@ -21,7 +21,7 @@ public class AnimalData : MonoBehaviour
                 _vectorList.Add(new Vector2Int(-1, -1));
                 break;
             case 103:
-                _vectorList.Add(new Vector2Int(0, 1));
+                _vectorList.Add(new Vector2Int(0, 0));
                 _vectorList.Add(new Vector2Int(0, -1));
                 _vectorList.Add(new Vector2Int(0, -2));
                 _vectorList.Add(new Vector2Int(-1, 0));

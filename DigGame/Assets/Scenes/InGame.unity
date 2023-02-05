@@ -1437,19 +1437,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39d0cae62c679474cb10e66d795899b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
   prefabs:
-  - {fileID: 3106551308348581663, guid: 15f6c4cec01374ee9bf415d4519ac762, type: 3}
-  - {fileID: 6976071262735461704, guid: bb43cbf883d174e99ae245bd8680de6a, type: 3}
-  - {fileID: 2442658404682349509, guid: 052c1e6842b1347a39a3bdf9a59762c7, type: 3}
-  - {fileID: 2725479437159822937, guid: d1ebd3f99612c40ae8ee61798756bf51, type: 3}
-  - {fileID: 8824892320837197785, guid: 7a447baafa58242d2b797cb853b5c968, type: 3}
-  - {fileID: 3264924019155120728, guid: beb98d4dfa81b4c8ab62a2e60b92ddc6, type: 3}
-  - {fileID: 1483723215564332444, guid: 2c058725f63064138a38c72555286ec5, type: 3}
-  - {fileID: 8444808390583008893, guid: 6bcae4e67c1da44528838b92e05dcc6c, type: 3}
-  - {fileID: 4009698415338754796, guid: 2ba3d41ecba64488eae7e4a1e295fc64, type: 3}
-  - {fileID: 5009405920998808071, guid: 8697fd3256b6c45959b866ce0c1f6d46, type: 3}
-  - {fileID: 438968842182965406, guid: 7e0db18bb2e4e42c0a7ea1c99f389d4a, type: 3}
-  - {fileID: 6243007529448517783, guid: b94042ba102f7463a85b42b05ebe1232, type: 3}
+  - {fileID: 5343534270195627651, guid: 15f6c4cec01374ee9bf415d4519ac762, type: 3}
+  - {fileID: -3419695168740754258, guid: bb43cbf883d174e99ae245bd8680de6a, type: 3}
+  - {fileID: 6747220517899863378, guid: 052c1e6842b1347a39a3bdf9a59762c7, type: 3}
+  - {fileID: 4911969526178664151, guid: d1ebd3f99612c40ae8ee61798756bf51, type: 3}
+  - {fileID: 2988735992754917307, guid: 7a447baafa58242d2b797cb853b5c968, type: 3}
+  - {fileID: 2195078553667871599, guid: beb98d4dfa81b4c8ab62a2e60b92ddc6, type: 3}
+  - {fileID: 4527607545584127170, guid: 2c058725f63064138a38c72555286ec5, type: 3}
+  - {fileID: 6969729314654639652, guid: 6bcae4e67c1da44528838b92e05dcc6c, type: 3}
+  - {fileID: 2005004321425086584, guid: 2ba3d41ecba64488eae7e4a1e295fc64, type: 3}
+  - {fileID: 7946253195262307479, guid: 8697fd3256b6c45959b866ce0c1f6d46, type: 3}
+  - {fileID: 4856781350396578904, guid: 7e0db18bb2e4e42c0a7ea1c99f389d4a, type: 3}
+  - {fileID: 9085464637245655321, guid: b94042ba102f7463a85b42b05ebe1232, type: 3}
+  nowAnimal: {fileID: 0}
   NowAnimalId: 0
   AnimalNum: 0
   DialogueNow: 
@@ -2794,6 +2804,7 @@ MonoBehaviour:
   curTime: 0
   timeStop: 0
   score: 0
+  killCnt: 0
   DialogueText: {fileID: 4483507069608102178}
 --- !u!4 &1191485380
 Transform:

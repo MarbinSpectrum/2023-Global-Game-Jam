@@ -94,8 +94,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3092193067825557524}
   - component: {fileID: 8900205897200102156}
-  - component: {fileID: 6166941272241078431}
   - component: {fileID: 366059553064587757}
+  - component: {fileID: 4911969526178664151}
   m_Layer: 0
   m_Name: 201
   m_TagString: Untagged
@@ -171,23 +171,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6166941272241078431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2725479437159822937}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b610a8e094e5b614391968e1710dd0db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _clicked: 1
-  type: 1
-  ID: 201
-  point: 4
-  Dialogue: "\uC774\uBC88 \uACA8\uC6B8\uC740 \uB108\uBB34 \uCD94\uC6CC\uC694"
 --- !u!60 &366059553064587757
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -287,3 +270,17 @@ PolygonCollider2D:
       - {x: -0.024999999, y: -0.78499997}
       - {x: 0.074999996, y: -0.79499996}
       - {x: 0.195, y: -0.79999995}
+--- !u!114 &4911969526178664151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2725479437159822937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72ff316b9ae711346b91a843d945b120, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ID: 201
+  point: 400

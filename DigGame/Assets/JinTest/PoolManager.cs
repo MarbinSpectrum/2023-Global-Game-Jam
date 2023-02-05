@@ -34,7 +34,7 @@ public class PoolManager : FieldObjectSingleton<PoolManager>
 
     public int[] CurAnimal;
 
-    private void Awake()
+    private void Start()
     {
         AnimalSetting();
     }

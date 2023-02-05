@@ -7,7 +7,9 @@ public class AnimalManager : MonoBehaviour
 
     private Vector2Int _mousePosition;
     private Vector2 _originalPosition;
-    private bool _crashed, _clicked;
+    private bool _crashed;
+
+    public bool _clicked = true;
     public int ID;
     private List<Vector2Int> _vectorList = new();
     public int point;
@@ -38,7 +40,7 @@ public class AnimalManager : MonoBehaviour
             _crashed = false;
             PoolManager.instance.nowAnimal = null;
 
-            Destroy(this);
+            Destroy(gameObject);
         }
         else if (!_crashed && !_clicked)
         {
@@ -48,6 +50,8 @@ public class AnimalManager : MonoBehaviour
             this.GetComponent<PolygonCollider2D>().enabled = false;
             transform.GetChild(0).gameObject.SetActive(true);
             GetComponent<SpriteRenderer>().enabled = false;
+
+            PoolManager.instance.nowAnimal = null;
         }
     }
 

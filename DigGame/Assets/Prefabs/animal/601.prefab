@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1708733099739662857}
   - component: {fileID: 5439322324712228972}
-  - component: {fileID: 5033480732667683262}
-  - component: {fileID: 4684321152473165142}
+  - component: {fileID: 4856781350396578904}
+  - component: {fileID: 3353569748495376695}
+  - component: {fileID: 4762631172969041825}
   m_Layer: 0
   m_Name: 601
   m_TagString: Untagged
@@ -87,7 +88,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5033480732667683262
+--- !u!114 &4856781350396578904
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -96,15 +97,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 438968842182965406}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b610a8e094e5b614391968e1710dd0db, type: 3}
+  m_Script: {fileID: 11500000, guid: 72ff316b9ae711346b91a843d945b120, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _clicked: 1
-  type: 5
   ID: 601
-  point: 10
-  Dialogue: "\uB098\uB294 \uC880 \uAE4C\uB2E4\uB86D\uB2E4\uAD6C?"
---- !u!60 &4684321152473165142
+  point: 1000
+--- !u!60 &3353569748495376695
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -369,6 +368,32 @@ PolygonCollider2D:
       - {x: -0.69, y: -2.19}
       - {x: -0.655, y: -2.175}
       - {x: -0.48, y: -1.995}
+--- !u!61 &4762631172969041825
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438968842182965406}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.085954666, y: 0.33600318}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4.6, y: 4.6}
+    newSize: {x: 4.6, y: 4.6}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.8340302, y: 3.459151}
+  m_EdgeRadius: 0
 --- !u!1 &7086265740617278271
 GameObject:
   m_ObjectHideFlags: 0

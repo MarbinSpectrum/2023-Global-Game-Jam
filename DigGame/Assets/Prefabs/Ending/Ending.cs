@@ -2,10 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Ending : MonoBehaviour
 {
     public GameObject gameUI;
+    public GameObject DialogueBG;
+    public GameObject Dialogue1;
+    public GameObject Dialogue2;
+    public Text Count;
+
+    public GameManager gameManager;
+
 
     public FollowCamera followCamera;
     public Transform closeOutTargetPos;
@@ -66,5 +74,19 @@ public class Ending : MonoBehaviour
             yield return null;
         }
         blueFilter.color = new UnityEngine.Color(1, 1, 1, 1);
+
+        yield return new WaitForSeconds(5f);
+        DialogueBG.SetActive(true);
+        Dialogue2.SetActive(false);
+        Count.text = gameManager.killCnt.ToString();
+
+
+        yield return new WaitForSeconds(5f);
+
+
+        Dialogue1.SetActive(false);
+        Dialogue2.SetActive(true);
+     
+
     }
 }

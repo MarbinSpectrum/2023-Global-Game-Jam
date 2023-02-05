@@ -52,6 +52,7 @@ public class ObstacleTileGroup : TileGroup
     
     public void CrateObstacle(int x,int y)
     {
+        TileManager tileManager = TileManager.instance;
         int r = Random.Range(0,3);
         switch(r)
         {
@@ -62,6 +63,12 @@ public class ObstacleTileGroup : TileGroup
                         tileList.Contains(new Vector2Int(x + 1, y)) || 
                         tileList.Contains(new Vector2Int(x + 1, y - 1)))
                         return;
+                    if (tileManager.GetTile(x, y) == TileType.Gravel ||
+                        tileManager.GetTile(x, y - 1) == TileType.Gravel ||
+                        tileManager.GetTile(x + 1, y) == TileType.Gravel ||
+                        tileManager.GetTile(x + 1, y - 1) == TileType.Gravel)
+                        return;
+
                     tileList.Add(new Vector2Int(x, y));
                     tileList.Add(new Vector2Int(x, y - 1));
                     tileList.Add(new Vector2Int(x + 1, y));
@@ -82,6 +89,14 @@ public class ObstacleTileGroup : TileGroup
                         tileList.Contains(new Vector2Int(x + 2, y - 1)
                         ))
                         return;
+                    if (tileManager.GetTile(x, y) == TileType.Gravel ||
+                        tileManager.GetTile(x, y - 1) == TileType.Gravel ||
+                        tileManager.GetTile(x + 1, y) == TileType.Gravel ||
+                        tileManager.GetTile(x + 1, y - 1) == TileType.Gravel ||
+                        tileManager.GetTile(x + 2, y) == TileType.Gravel ||
+                        tileManager.GetTile(x + 2, y - 1) == TileType.Gravel)
+                        return;
+
                     tileList.Add(new Vector2Int(x, y));
                     tileList.Add(new Vector2Int(x, y - 1));
                     tileList.Add(new Vector2Int(x + 1, y));
@@ -104,6 +119,13 @@ public class ObstacleTileGroup : TileGroup
                         tileList.Contains(new Vector2Int(x + 1, y)) ||
                         tileList.Contains(new Vector2Int(x + 1, y - 1)) ||
                         tileList.Contains(new Vector2Int(x + 1, y - 2)))
+                        return;
+                    if (tileManager.GetTile(x, y) == TileType.Gravel ||
+                        tileManager.GetTile(x, y - 1) == TileType.Gravel ||
+                        tileManager.GetTile(x, y - 2) == TileType.Gravel ||
+                        tileManager.GetTile(x + 1, y ) == TileType.Gravel ||
+                        tileManager.GetTile(x + 1, y - 1) == TileType.Gravel ||
+                        tileManager.GetTile(x + 1, y - 2) == TileType.Gravel)
                         return;
                     tileList.Add(new Vector2Int(x, y));
                     tileList.Add(new Vector2Int(x, y - 1));

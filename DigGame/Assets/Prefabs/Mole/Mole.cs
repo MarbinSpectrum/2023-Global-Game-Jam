@@ -207,6 +207,8 @@ public class Mole : MonoBehaviour
             {
                 if (GameManager.instance.isGameover)
                     return;
+                if (GameManager.instance.timeStop)
+                    return;
 
                 movePlayer = true;
                 StartCoroutine(runDigMole(new Vector2Int(pos.x + dicX, pos.y + dicY)));

@@ -2,10 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Ending : MonoBehaviour
 {
+    public GameManager gameManager;
+
     public GameObject gameUI;
+    public GameObject dialogueBG;
+    public GameObject dialogue1;
+    public GameObject dialogue2;
+    public Text count;
 
     public FollowCamera followCamera;
     public Transform closeOutTargetPos;
@@ -32,8 +39,7 @@ public class Ending : MonoBehaviour
 
     private IEnumerator runStartEnding()
     {
-        normalHouse.SetActive(false);
-        endingHouse.SetActive(true);
+        
         gameUI.SetActive(false);
 
         followCamera.target = closeOutTargetPos;
@@ -42,14 +48,20 @@ public class Ending : MonoBehaviour
         followCamera.duration = closeOutDuration;
 
         yield return new WaitForSeconds(9f);
+       
 
         moleObj.SetActive(false);
+        normalHouse.SetActive(false);
+        endingHouse.SetActive(true);
         followCamera.target = closeUpTargetPos;
         followCamera.offset = closeUpOffset;
         followCamera.cameraSize = closeUpSize;
         followCamera.duration = closeUpDuration;
+        
 
         yield return new WaitForSeconds(3f);
+
+       
 
         float fromA = 0;
         float toA = 1;
@@ -66,5 +78,21 @@ public class Ending : MonoBehaviour
             yield return null;
         }
         blueFilter.color = new UnityEngine.Color(1, 1, 1, 1);
+
+
+        yield return new WaitForSeconds(5.3f);
+
+
+        dialogueBG.SetActive(true);
+        dialogue1.SetActive(true);
+        count.text = gameManager.score.ToString();
+
+
+        yield return new WaitForSeconds(5f);
+
+        dialogue1.SetActive(false);
+        dialogue2.SetActive(true);
+
+
     }
 }

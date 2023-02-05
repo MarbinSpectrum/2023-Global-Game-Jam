@@ -67,7 +67,7 @@ public class AnimalManager : MonoBehaviour
         {
 
             bool isBlock = tileManager.IsBlock(movePos.x, movePos.y);
-            if (isBlock || HouseManager.CheckHouse(movePos) || movePos.y >= -5)
+            if (isBlock || HouseManager.CheckHouse(movePos) || movePos.y >= -3)
             {
                 _crashed = true;
                 break;

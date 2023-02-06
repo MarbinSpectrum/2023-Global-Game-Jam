@@ -21,3 +21,13 @@ public enum Direction
     Up = 300,
     Down = 400,
 }
+
+public enum ItemType
+{ 
+    Null = 0,
+    Time = 100, 
+    food = 200, 
+    DigSpeed = 300, 
+    RunSpeed = 400, 
+    Bomb = 500,
+}

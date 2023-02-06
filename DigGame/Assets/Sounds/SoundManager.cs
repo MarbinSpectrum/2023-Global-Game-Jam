@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundManager : FieldObjectSingleton<SoundManager>
+public class SoundManager : DontDestroySingleton<SoundManager>
 {
     public AudioSource se;
     public AudioSource bgm;

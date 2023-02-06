@@ -12,6 +12,8 @@ public class FollowCamera : MonoBehaviour
     public Transform target;
     public float cameraSize;
     public float duration = 0.5f;
+    public CameraFit cameraFit;
+
 
     private void Start()
     {
@@ -24,6 +26,7 @@ public class FollowCamera : MonoBehaviour
         Vector2 to = target.position + offset;
         float fromSize = camera.orthographicSize;
         float toSize = cameraSize;
+        toSize = cameraSize*cameraFit.cameraRate;
 
         float elapsed = 0.0f;
         while (elapsed < duration)

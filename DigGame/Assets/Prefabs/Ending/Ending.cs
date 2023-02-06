@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
-using UnityEditor.EditorTools;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -35,7 +34,7 @@ public class Ending : MonoBehaviour
 
     public SpriteRenderer blueFilter;
 
-   
+    public BGM_Player endBGM;
 
     public void StartEnding()
     {
@@ -44,14 +43,11 @@ public class Ending : MonoBehaviour
 
     private IEnumerator runStartEnding()
     {
+        endBGM.RunBGM();
         //Destroy(poolManager.nowAnimal);
-       
-        poolManager.nowAnimal.GetComponent<AnimalManager>()._clicked = false;
-        poolManager.nowAnimal.GetComponent<AnimalManager>().Destroy();
 
+        poolManager.DestroyNowAnimal();
 
-        normalHouse.SetActive(false);
-        endingHouse.SetActive(true);
         gameUI.SetActive(false);
 
         followCamera.target = closeOutTargetPos;
@@ -69,6 +65,7 @@ public class Ending : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
 
+        endingHouse.SetActive(true);
         float fromA = 0;
         float toA = 1;
         float elapsed = 0.0f;
@@ -84,8 +81,9 @@ public class Ending : MonoBehaviour
             yield return null;
         }
         blueFilter.color = new UnityEngine.Color(1, 1, 1, 1);
-
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(1f);
+        normalHouse.SetActive(false);
+        yield return new WaitForSeconds(7f);
         DialogueBG.SetActive(true);
         Dialogue2.SetActive(false);
         Count.text = gameManager.killCnt.ToString();

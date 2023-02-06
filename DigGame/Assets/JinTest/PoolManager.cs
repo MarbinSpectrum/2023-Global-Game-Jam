@@ -5,7 +5,7 @@ using UnityEngine;
 using static Animal;
 using static UnityEngine.GraphicsBuffer;
 
-public class PoolManager : FieldObjectSingleton<PoolManager>
+public class PoolManager : DontDestroySingleton<PoolManager>
 {
    
     public AnimalManager[] prefabs; // ����1~~ 
@@ -61,6 +61,8 @@ public class PoolManager : FieldObjectSingleton<PoolManager>
     public void AnimalSetting()
     {
         Alloff();
+
+        DestroyNowAnimal();
 
         Dictionary<AnimalType, int> aniRate = new Dictionary<AnimalType, int>();
         aniRate[AnimalType.Cat] = (int)CatRate;
@@ -274,7 +276,16 @@ public class PoolManager : FieldObjectSingleton<PoolManager>
 
     }
 
+    public void DestroyNowAnimal()
+    {
+        if (nowAnimal != null)
+        {
+            nowAnimal._clicked = false;
+            nowAnimal.Destroy();
 
+            nowAnimal = null;
+        }
+    }
 }
 
 

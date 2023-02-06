@@ -65,10 +65,16 @@ public class TileManager : FieldObjectSingleton<TileManager>
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// : x,y의 블록을 판다.
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public void DigBlock(int x, int y)
+    public void DigBlock(int x, int y,int digValue = 1)
     {
         Vector2Int pos = new Vector2Int(x, y);
         TileType tileType = GetTile(x, y);
-        tileGroups[tileType].DigTile(pos);
+        if (tileType == TileType.Gravel)
+            return;
+        if (tileType == TileType.Obstacle)
+            return;
+        if (tileGroups.ContainsKey(tileType) == false)
+            return;
+        tileGroups[tileType].DigTile(pos,digValue);
     }
 }

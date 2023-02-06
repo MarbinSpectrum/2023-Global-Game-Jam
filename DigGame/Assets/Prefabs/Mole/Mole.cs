@@ -2,7 +2,6 @@ using MyLib;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /// : �δ��� �̵������� �����Ǿ��ִ�.
@@ -14,8 +13,7 @@ public class Mole : MonoBehaviour
     private string nowAni = "Idle";
     private Direction nowDic = Direction.Null;
 
-    [SerializeField]
-    private Vector2Int pos;
+    public Vector2Int pos;
     [SerializeField]
     private float moveDuration;
     [SerializeField]
@@ -60,6 +58,8 @@ public class Mole : MonoBehaviour
     public IEnumerator runDigMole(List<Vector2Int> pRoutes)
     {
         TileManager tileManager = TileManager.instance;
+        ItemManager itemManager = ItemManager.instance;
+        GameManager gameManager = GameManager.instance;
 
         foreach (Vector2Int movePos in pRoutes)
         {
@@ -110,7 +110,12 @@ public class Mole : MonoBehaviour
             {
                 //������ ������ �����Ѵ�.
                 //digDuration��ŭ ����ϰ� 
-                yield return new WaitForSeconds(digDuration);
+
+                float finalDigDuration = digDuration;
+                if (gameManager.digUpTime > 0)
+                    finalDigDuration /= gameManager.digUpRate;
+
+                yield return new WaitForSeconds(finalDigDuration);
 
                 //�̵��� �����Ѵ�.
                 yield break;
@@ -164,8 +169,23 @@ public class Mole : MonoBehaviour
                 }
                 //�ش���ġ�� ������ �������� �ʴ´�.
                 //�ش���ġ�� �̵��Ѵ�.
-                yield return MyLib.Action2D.MoveTo(transform, new Vector3(movePos.x, movePos.y, 0), moveDuration);
+
+                float finalMoveDuration = moveDuration;
+                if(gameManager.speedUpTime > 0)
+                    finalMoveDuration /= gameManager.speedUpRate;
+                yield return MyLib.Action2D.MoveTo(transform, new Vector3(movePos.x, movePos.y, 0), finalMoveDuration);
+
                 pos = movePos;
+
+                itemManager.SpawnItem(pos);
+
+                Item item = itemManager.GetItem(pos);
+                if(item != null)
+                {
+                    item.runItemEffect();
+                    itemManager.RemoveItem(pos);
+                }
+
 
                 if (dig)
                 {
@@ -200,8 +220,7 @@ public class Mole : MonoBehaviour
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     private void Update()
     {
-        
-
+      
         if (movePlayer == false)
         {
             int dicX = (int)Input.GetAxisRaw("Horizontal");
@@ -218,10 +237,6 @@ public class Mole : MonoBehaviour
             }         
             else if (nowAni != "Idle" && nowDic != Direction.Down)
             {
-                //�ƹ��͵� �۵����ϰ� �ִ� �����̸�
-                //�Ʒ��� ���� �ִ� ���°� �ƴϴ�.
-
-                //�⺻ �����ڼ��� ���ư���.
                 animator.SetTrigger("Idle");
                 spriteRenderer.flipX = false;
                 spriteRenderer.flipY = false;
@@ -233,38 +248,5 @@ public class Mole : MonoBehaviour
 
 
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        print("ddd");
-        if (other.tag == "Item")
-        {
-            Item item = other.GetComponent<Item>();
-            switch (item.type)
-            {
-                case Item.Type.Time:
-                    GameManager.curTime += 30;
-                    break;
-
-                case Item.Type.food:
-                    print("추가해주세요");
-
-                    break;
-
-                case Item.Type.DigSpeed:
-                    digDuration -= 0.1f;
-                    break;
-
-                case Item.Type.RunSpeed:
-                    moveDuration -= 0.1f;
-                    break;
-
-                case Item.Type.Bomb:
-                    print("Bomb");
-                    
-                    break;
-
-            }
-            Destroy(other.gameObject);
-        }
-    }
+   
 }

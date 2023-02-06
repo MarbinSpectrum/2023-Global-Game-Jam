@@ -253,10 +253,10 @@ public class TileGroup : MonoBehaviour
                 life = 2;
                 break;
             case TileType.Ground:
-                life = 4;
+                life = 3;
                 break;
             case TileType.DarkGound:
-                life = 16;
+                life = 4;
                 break;
             case TileType.Gravel:
                 life = int.MaxValue;
@@ -290,7 +290,7 @@ public class TileGroup : MonoBehaviour
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// : pos위치의 블록을 캔다.
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public virtual void DigTile(Vector2Int pos)
+    public virtual void DigTile(Vector2Int pos,int digValue = 1)
     {
         if (tileLifes.ContainsKey(pos) == false)
         {
@@ -303,8 +303,8 @@ public class TileGroup : MonoBehaviour
         {
             //블록의 체력이 존재한다.
             //블록을 파낸다.
-            tileLifes[pos]--;
-            if (tileLifes[pos] == 0)
+            tileLifes[pos]-= digValue;
+            if (tileLifes[pos] <= 0)
             {
                 //블록의 체력이 0이 되었다.
                 //해당 위치의 블록을 없애준다.

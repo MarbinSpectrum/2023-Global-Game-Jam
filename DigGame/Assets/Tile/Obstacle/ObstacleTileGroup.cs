@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UIElements;
-using static UnityEditor.PlayerSettings;
 
 public class ObstacleTileGroup : TileGroup
 {
@@ -21,23 +20,23 @@ public class ObstacleTileGroup : TileGroup
         //해당타일의 종류에 따라서 체력을 결정해준다.
         int life = int.MaxValue;
         int h = CreateTileMap.HEIGHT;
-        for (int i = 0; i < 300; i++)
+        for (int i = 0; i < 150; i++)
         {
-            int r = Random.Range(0, 30 * (10 + 2 * h));
+            int r = Random.Range(0, (int)(h*0.3) * (10 + 2 * h));
             int x = r % (10 + 2 * h) - (5 + h);
             int y = -(r / (10 + 2 * h));
             CrateObstacle(x, y);
         }
-        for (int i = 0; i < 200; i++)
+        for (int i = 0; i < 100; i++)
         {
-            int r = Random.Range(30 * (10 + 2 * h), 60 * (10 + 2 * h));
+            int r = Random.Range((int)(h * 0.3) * (10 + 2 * h), (int)(h * 0.6) * (10 + 2 * h));
             int x = r % (10 + 2 * h) - (5 + h);
             int y = -(r / (10 + 2 * h));
             CrateObstacle(x, y);
         }
-        for (int i = 0; i < 50; i++)
+        for (int i = 0; i < 25; i++)
         {
-            int r = Random.Range(60 * (10 + 2 * h), h * (10 + 2 * h));
+            int r = Random.Range((int)(h * 0.6) * (10 + 2 * h), h * (10 + 2 * h));
             int x = r % (10 + 2 * h) - (5 + h);
             int y = -(r / (10 + 2 * h));
             CrateObstacle(x, y);

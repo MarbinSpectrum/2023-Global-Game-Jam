@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Ending : MonoBehaviour
 {
@@ -10,7 +11,8 @@ public class Ending : MonoBehaviour
     public GameObject DialogueBG;
     public GameObject Dialogue1;
     public GameObject Dialogue2;
-    public Text Count;
+    public TextMeshProUGUI ending001;
+    public TextMeshProUGUI ending002;
 
     public GameManager gameManager;
     public PoolManager poolManager;
@@ -86,8 +88,9 @@ public class Ending : MonoBehaviour
         yield return new WaitForSeconds(7f);
         DialogueBG.SetActive(true);
         Dialogue2.SetActive(false);
-        Count.text = gameManager.killCnt.ToString();
-
+        string Formatvalue = LanguageManager.GetText("ENDING_001");
+        ending001.text = string.Format(LanguageManager.GetText("ENDING_001"), GameManager.instance.killCnt);
+        ending002.text = LanguageManager.GetText("ENDING_002");
 
         yield return new WaitForSeconds(5f);
 

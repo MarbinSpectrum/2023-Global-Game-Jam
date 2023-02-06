@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 public class GameManager : DontDestroySingleton<GameManager>
 {
     public PoolManager poolManager;
@@ -21,7 +21,9 @@ public class GameManager : DontDestroySingleton<GameManager>
     [Header("Score System")]
     public int score;
     public int killCnt;
-    public Text DialogueText;
+    public TextMeshProUGUI DialogueText;
+    public TextMeshProUGUI headerScoreText;
+    public TextMeshProUGUI passBtnText;
 
     [Header("Item System")]
     public int speedUpTime = 0;
@@ -66,6 +68,9 @@ public class GameManager : DontDestroySingleton<GameManager>
 
     private void Update()
     {
+        headerScoreText.text = LanguageManager.GetText("NOW_SCORE");
+        passBtnText.text = LanguageManager.GetText("PASS_BTN");
+
         DialogueSystem();
     }
 

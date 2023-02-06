@@ -6,7 +6,8 @@ public class Item_Bomb : Item
 {
     public int BoomDistance;
     public int BoomPower;
-
+    public GameObject BombEffect;
+    public SoundObj soundObj;
     public override void runItemEffect()
     {
         Mole player = GameManager.instance.player;
@@ -25,5 +26,9 @@ public class Item_Bomb : Item
                 tileManager.DigBlock(x, y, BoomPower);
             }
         }
+
+        GameObject effect = Instantiate(BombEffect);
+        effect.transform.position = transform.position;
+        soundObj.RunSE();
     }
 }

@@ -100,19 +100,19 @@ public class PoolManager : DontDestroySingleton<PoolManager>
                 {
                     NowAnimalId = 101;
                     AnimalNum = 0;
-                    DialogueNow = " 냐아아앙...";
+                    DialogueNow = LanguageManager.GetText("CAT_101");
                 }
                 else if(cat == 1)
                 {
                     NowAnimalId = 102;
                     AnimalNum = 1;
-                    DialogueNow = " 스트레칭 할 넓은 공간이 필요하다냥";
+                    DialogueNow = LanguageManager.GetText("CAT_102");
                 }
                 else if(cat == 2)
                 {
                     NowAnimalId = 103;
                     AnimalNum = 2;
-                    DialogueNow = " 춤을 춰서 추위를 이겨내자냥! ";
+                    DialogueNow = LanguageManager.GetText("CAT_103");
                 }
 
 
@@ -129,13 +129,13 @@ public class PoolManager : DontDestroySingleton<PoolManager>
                 {
                     NowAnimalId = 201;
                     AnimalNum = 3;
-                    DialogueNow = " 이번 겨울은 너무 추워요";
+                    DialogueNow = LanguageManager.GetText("RABBIT_201");
                 }
                 else if (Rabbit == 1)
                 {
                     NowAnimalId = 202;
                     AnimalNum = 4;
-                    DialogueNow = "우리는 둘이 한몸...!";
+                    DialogueNow = LanguageManager.GetText("RABBIT_202");
                 }
 
                 RabbitImg.SetActive(true);
@@ -150,13 +150,13 @@ public class PoolManager : DontDestroySingleton<PoolManager>
                 {
                     NowAnimalId = 301;
                     AnimalNum = 5;
-                    DialogueNow = "안....녕.....하세...요....저...는....거...북..";
+                    DialogueNow = LanguageManager.GetText("TURTLE_301");
                 }
                 else if (Turtle == 1)
                 {
                     NowAnimalId = 302;
                     AnimalNum = 6;
-                    DialogueNow = "..........거.....북....ㅠ";
+                    DialogueNow = LanguageManager.GetText("TURTLE_302");
                 }
 
                 TurtleImg.SetActive(true);
@@ -172,13 +172,13 @@ public class PoolManager : DontDestroySingleton<PoolManager>
                 {
                     NowAnimalId = 404;
                     AnimalNum = 7;
-                    DialogueNow = "고기가 쪼아!";
+                    DialogueNow = LanguageManager.GetText("PUPPY_404");
                 }
                 else if (Puppy == 1)
                 {
                     NowAnimalId = 405;
                     AnimalNum = 8;
-                    DialogueNow = "겨울만 지나면 엄마랑 만날거에요 멍!";
+                    DialogueNow = LanguageManager.GetText("PUPPY_405");
                 }
 
                 PuppyImg.SetActive(true);
@@ -190,7 +190,7 @@ public class PoolManager : DontDestroySingleton<PoolManager>
                 NowAnimalId = 501;
                 ElephantImg.SetActive(true);
                 AnimalNum = 9;
-                DialogueNow = "나처럼 큰 동물을 위한 집도 가능할까요?";
+                DialogueNow = LanguageManager.GetText("ELEPHANT_501");
                 break;
 
             // 5 : 뱀 
@@ -201,13 +201,13 @@ public class PoolManager : DontDestroySingleton<PoolManager>
                 {
                     NowAnimalId = 601;
                     AnimalNum = 10;
-                    DialogueNow = "나는 좀 까다롭다구?";
+                    DialogueNow = LanguageManager.GetText("SNAKE_601");
                 }
                 else if (Snake == 1)
                 {
                     NowAnimalId = 602;
                     AnimalNum = 11;
-                    DialogueNow = "쉬익... 쉬익...!";
+                    DialogueNow = LanguageManager.GetText("SNAKE_602");
                 }
                 SnakeImg.SetActive(true);
                 break;

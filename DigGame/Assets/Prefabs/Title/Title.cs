@@ -29,6 +29,5 @@ public class Title : MonoBehaviour
 
         yield return new WaitForSeconds(duration);
         followCamera.duration = 0.02f;
-        GameManager.instance.GameStart();
     }
 }

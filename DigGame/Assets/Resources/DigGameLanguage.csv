@@ -1,0 +1,29 @@
+Key,한국어,English,日本語
+NOW_SCORE,현재 스코어,Now Score,Now Score
+PASS_BTN,패스!,PASS!,PASS!
+CAT_101,냐아아앙...,It's very cold….,寒すぎるニャ
+CAT_102,스트레칭 할 넓은 공간이 필요하다냥,I want my own space for stretching.,ストレッチのために自分だけのスペースが必要だニャ
+CAT_103,춤을 춰서 추위를 이겨내자냥!,Let's dance to warm ourselves up!,寒い時は踊って打ち勝つニャ!!
+RABBIT_201,"이번 겨울은 너무 추워요""",This winter is especially cold…,今年の冬は寒すぎるぴょん…
+RABBIT_202,우리는 둘이 한몸...!,We need a double bed,ウサギカップルのための広い家もできるぴょん？
+TURTLE_301,안....녕.....하세...요....저...는....거...북..,h..e…l..l……………….o.,こ…ん…に…ち…は…。わ…た…し…かめ…だよ…。
+TURTLE_302,..........거.....북....ㅠ,Guys we'll have a new house soon!,私たちはカメ大家族！
+PUPPY_404,고기가 쪼아!,I just want meat. woof woof,肉を食べたいワン!
+PUPPY_405,겨울만 지나면 엄마랑 만날거에요 멍!,Can I see my mom in spring?I,春が来たらママに会いに行くワン
+ELEPHANT_501,나처럼 큰 동물을 위한 집도 가능할까요?,Make a house for a big animal like me.,ぱおーん。私みたいに大きな動物のための家があるかな？
+SNAKE_601,나는 좀 까다롭다구?,I'm a little picky. Is it okay?,本当に大丈夫なのかしら？私は少し気難しいレディだからね。
+SNAKE_602,쉬익... 쉬익...!,Hurry up! It's freezing,早く家を作ってくれ! 寒くて死にそうじゃ！
+ENDING_001,추운 겨울이 오기 전까지\n두더지는 나무 뿌리 아래에\n{0}마리의 동물 친구들에게\n 보금자리를 만들어 주었습니다.,Before the cold winter came the mole made a house for {0}animals. Thanks to the hard work of the mole all the animals welcomed the winter warmly.,寒い冬が来るまで、モグラちゃんは木の根の下に{0}人の動物達の巣を作ってくれました。\nモグラちゃんのおかげで、友達たちは暖かい冬を過ごすことができました
+ENDING_002,···그리고\n두더지는 편히 겨울잠에 들었답니다.,Finally the mole also began to hibernate comfortably.,そしてついに..\nモグラさんもぐっすり冬みんすることができました
+HOWTOPLAY_DIAOGUE,춥다냥...,It's very cold….,寒すぎるニャ
+HOWTOPLAY_TEXT0,동물 친구를 눌러보면\n<color=#23908D>원하는 집 크기</color>를 \n알 수 있어요!,Click on the animal \n picture to find out the \n size of the house they \n want.,動物の絵をおしてみると、必要な家のサイズがわかります
+HOWTOPLAY_TEXT1,집을 지어주기 까다롭다면\n<color=#23908D>3번</color>까지 <color=#23908D>pass</color>를\n사용할 수 있어요.,You can avoid the hard \n shape by using <color=#23908D>3 pass </color>\n buttons.,家を建てるのが難しいなら<color=#23908D><size=70><sub>3</sub></size></color>\n番までは<color=#23908D><size=40>pass</size></color> を使うことができます!
+HOWTOPLAY_TEXT2,조작키,<color=#6ca2d8>Control</color>,<color=#6ca2d8>Control</color>
+HOWTOPLAY_TEXT3,<color=#6ca2d8><size=45>방향키</size></color><size=35>와</size>,<color=#6ca2d8>Arrow Key</color>,<color=#6ca2d8>Arrow Key</color>
+HOWTOPLAY_TEXT4,<color=#6ca2d8>좌 클릭</color>,<color=#6ca2d8>Left Clock</color>,<color=#6ca2d8>Left Clock</color>
+HOWTOPLAY_TEXT5,<color=#6ca2d8>남은 시간</color>은 이곳에 표시돼요!,You can check the \n <color=#6ca2d8>remaining time </color>here.,ここで残り時間を チェックできます。
+HOWTOPLAY_TEXT6,이동속도\n증가,Increasing move \n speed,移動速度のスピード
+HOWTOPLAY_TEXT7,남은 시간\n증가,Increasing game \n time,残り時間のスピード
+HOWTOPLAY_TEXT8,더 많은\n포인트,get more \n points,より多くのポイントをる 多 る
+HOWTOPLAY_TEXT9,채굴속도\n증가,Increasing digging \n speed ,ほる速度のスピード
+HOWTOPLAY_TEXT10,폭발이\n일어납니다!,surrounding block \n explodes,周 爆 辺ブロックが 爆発

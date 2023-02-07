@@ -22,6 +22,8 @@ public class HowToPlayText : MonoBehaviour
 
     private void Update()
     {
+
+
         PASS_BTN.text = LanguageManager.GetText("PASS_BTN");
         HOWTOPLAY_DIAOGUE.text = LanguageManager.GetText("HOWTOPLAY_DIAOGUE");
         HOWTOPLAY_TEXT0.text = LanguageManager.GetText("HOWTOPLAY_TEXT0");
@@ -35,6 +37,9 @@ public class HowToPlayText : MonoBehaviour
         HOWTOPLAY_TEXT8.text = LanguageManager.GetText("HOWTOPLAY_TEXT8");
         HOWTOPLAY_TEXT9.text = LanguageManager.GetText("HOWTOPLAY_TEXT9");
         HOWTOPLAY_TEXT10.text = LanguageManager.GetText("HOWTOPLAY_TEXT10");
+
+
+
     }
 
     public void GameStart()

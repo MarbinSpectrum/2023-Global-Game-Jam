@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using static Animal;
-using static UnityEngine.GraphicsBuffer;
 
 public class PoolManager : DontDestroySingleton<PoolManager>
 {
@@ -36,11 +35,6 @@ public class PoolManager : DontDestroySingleton<PoolManager>
 
     public GameObject btn0;
     public GameObject btn1;
-
-    private void Start()
-    {
-        AnimalSetting();
-    }
 
     public int passCnt = 3;
     public void UsePass()

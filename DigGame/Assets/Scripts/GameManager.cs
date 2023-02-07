@@ -41,6 +41,7 @@ public class GameManager : DontDestroySingleton<GameManager>
     {
         timeStop = false;
         curTime = startTime;
+        PoolManager.instance.AnimalSetting();
         StartCoroutine(runTimeLogic());
     }
 

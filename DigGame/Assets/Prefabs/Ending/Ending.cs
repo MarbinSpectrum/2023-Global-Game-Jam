@@ -89,10 +89,10 @@ public class Ending : MonoBehaviour
         DialogueBG.SetActive(true);
         Dialogue2.SetActive(false);
         string Formatvalue = LanguageManager.GetText("ENDING_001");
-        ending001.text = string.Format(LanguageManager.GetText("ENDING_001"), GameManager.instance.killCnt);
+        ending001.text = string.Format(Formatvalue, GameManager.instance.killCnt);
         ending002.text = LanguageManager.GetText("ENDING_002");
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
 
 
         Dialogue1.SetActive(false);

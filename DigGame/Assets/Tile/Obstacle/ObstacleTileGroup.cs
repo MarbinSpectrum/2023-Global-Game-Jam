@@ -13,7 +13,7 @@ public class ObstacleTileGroup : TileGroup
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// : pPosList의 좌표데이터 타일을 생성한다.
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public override void SetTile(List<Vector2Int> pPosList, TileType pTileType)
+    public override IEnumerator runCreateTiles(List<Vector2Int> pPosList, TileType pTileType)
     {
         tileType = pTileType;
 
@@ -25,21 +25,21 @@ public class ObstacleTileGroup : TileGroup
             int r = Random.Range(0, (int)(h*0.3) * (10 + 2 * h));
             int x = r % (10 + 2 * h) - (5 + h);
             int y = -(r / (10 + 2 * h));
-            CrateObstacle(x, y);
+            yield return CrateObstacle(x, y);
         }
         for (int i = 0; i < 100; i++)
         {
             int r = Random.Range((int)(h * 0.3) * (10 + 2 * h), (int)(h * 0.6) * (10 + 2 * h));
             int x = r % (10 + 2 * h) - (5 + h);
             int y = -(r / (10 + 2 * h));
-            CrateObstacle(x, y);
+            yield return CrateObstacle(x, y);
         }
         for (int i = 0; i < 25; i++)
         {
             int r = Random.Range((int)(h * 0.6) * (10 + 2 * h), h * (10 + 2 * h));
             int x = r % (10 + 2 * h) - (5 + h);
             int y = -(r / (10 + 2 * h));
-            CrateObstacle(x, y);
+            yield return CrateObstacle(x, y);
         }
 
         foreach (Vector2Int pos in tileList)
@@ -47,9 +47,9 @@ public class ObstacleTileGroup : TileGroup
             //타일의 좌표에 체력값을 등록해준다.
             tileLifes[pos] = life;
         }
-    }   
-    
-    public void CrateObstacle(int x,int y)
+    }
+
+    public IEnumerator CrateObstacle(int x,int y)
     {
         TileManager tileManager = TileManager.instance;
         int r = Random.Range(0,3);
@@ -61,12 +61,12 @@ public class ObstacleTileGroup : TileGroup
                         tileList.Contains(new Vector2Int(x, y - 1)) ||
                         tileList.Contains(new Vector2Int(x + 1, y)) || 
                         tileList.Contains(new Vector2Int(x + 1, y - 1)))
-                        return;
+                        yield break;
                     if (tileManager.GetTile(x, y) == TileType.Gravel ||
                         tileManager.GetTile(x, y - 1) == TileType.Gravel ||
                         tileManager.GetTile(x + 1, y) == TileType.Gravel ||
                         tileManager.GetTile(x + 1, y - 1) == TileType.Gravel)
-                        return;
+                        yield break;
 
                     tileList.Add(new Vector2Int(x, y));
                     tileList.Add(new Vector2Int(x, y - 1));
@@ -76,6 +76,11 @@ public class ObstacleTileGroup : TileGroup
                     tileBody.SetTile(x + 1, y, mainTile[2]);
                     tileBody.SetTile(x, y - 1, mainTile[6]);
                     tileBody.SetTile(x + 1, y - 1, mainTile[4]);
+                    if (createNum % crateWaitCycle == 0)
+                    {
+                        yield return new WaitForSeconds(craeteWaitTime);
+                    }
+                    createNum++;
                 }
                 break;
             case 1:
@@ -87,14 +92,14 @@ public class ObstacleTileGroup : TileGroup
                          tileList.Contains(new Vector2Int(x + 2, y)) ||
                         tileList.Contains(new Vector2Int(x + 2, y - 1)
                         ))
-                        return;
+                        yield break;
                     if (tileManager.GetTile(x, y) == TileType.Gravel ||
                         tileManager.GetTile(x, y - 1) == TileType.Gravel ||
                         tileManager.GetTile(x + 1, y) == TileType.Gravel ||
                         tileManager.GetTile(x + 1, y - 1) == TileType.Gravel ||
                         tileManager.GetTile(x + 2, y) == TileType.Gravel ||
                         tileManager.GetTile(x + 2, y - 1) == TileType.Gravel)
-                        return;
+                        yield break;
 
                     tileList.Add(new Vector2Int(x, y));
                     tileList.Add(new Vector2Int(x, y - 1));
@@ -108,6 +113,11 @@ public class ObstacleTileGroup : TileGroup
                     tileBody.SetTile(x, y - 1, mainTile[6]);
                     tileBody.SetTile(x + 1, y - 1, mainTile[5]);
                     tileBody.SetTile(x + 2, y - 1, mainTile[4]);
+                    if (createNum % crateWaitCycle == 0)
+                    {
+                        yield return new WaitForSeconds(craeteWaitTime);
+                    }
+                    createNum++;
                 }
                 break;
             case 2:
@@ -118,14 +128,14 @@ public class ObstacleTileGroup : TileGroup
                         tileList.Contains(new Vector2Int(x + 1, y)) ||
                         tileList.Contains(new Vector2Int(x + 1, y - 1)) ||
                         tileList.Contains(new Vector2Int(x + 1, y - 2)))
-                        return;
+                        yield break;
                     if (tileManager.GetTile(x, y) == TileType.Gravel ||
                         tileManager.GetTile(x, y - 1) == TileType.Gravel ||
                         tileManager.GetTile(x, y - 2) == TileType.Gravel ||
                         tileManager.GetTile(x + 1, y ) == TileType.Gravel ||
                         tileManager.GetTile(x + 1, y - 1) == TileType.Gravel ||
                         tileManager.GetTile(x + 1, y - 2) == TileType.Gravel)
-                        return;
+                        yield break;
                     tileList.Add(new Vector2Int(x, y));
                     tileList.Add(new Vector2Int(x, y - 1));
                     tileList.Add(new Vector2Int(x, y - 2));
@@ -138,6 +148,11 @@ public class ObstacleTileGroup : TileGroup
                     tileBody.SetTile(x + 1, y - 1, mainTile[3]);
                     tileBody.SetTile(x, y - 2, mainTile[6]);
                     tileBody.SetTile(x + 1, y - 2, mainTile[4]);
+                    if (createNum % crateWaitCycle == 0)
+                    {
+                        yield return new WaitForSeconds(craeteWaitTime);
+                    }
+                    createNum++;
                 }
                 break;
 

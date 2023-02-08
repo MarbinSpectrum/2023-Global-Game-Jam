@@ -95,7 +95,6 @@ GameObject:
   - component: {fileID: 7779687570538988196}
   - component: {fileID: 7534518310243932732}
   - component: {fileID: 6747220517899863378}
-  - component: {fileID: 1386583807847431166}
   m_Layer: 0
   m_Name: 103
   m_TagString: Untagged
@@ -184,35 +183,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72ff316b9ae711346b91a843d945b120, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _clicked: 1
+  spriteRenderer: {fileID: 7534518310243932732}
+  houseObj: {fileID: 4061111415987944376}
+  gridObj: {fileID: 3534544938767258012}
   ID: 103
   point: 800
---- !u!61 &1386583807847431166
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2442658404682349509}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.9682504, y: -0.5174997}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.75, y: 0.65}
-    oldSize: {x: 3.45, y: 3.45}
-    newSize: {x: 3.45, y: 3.45}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.8507493, y: 2.7802486}
-  m_EdgeRadius: 0
+  _clicked: 1
 --- !u!1 &4479789967865690506
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,7 +205,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1974860631095643975
 Transform:
   m_ObjectHideFlags: 0
@@ -252,7 +228,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4479789967865690506}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1

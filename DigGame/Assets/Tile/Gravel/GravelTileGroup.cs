@@ -11,7 +11,7 @@ public class GravelTileGroup : TileGroup
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// : pPosList의 좌표데이터 타일을 생성한다.
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public override void SetTile(List<Vector2Int> pPosList, TileType pTileType)
+    public override IEnumerator runCreateTiles(List<Vector2Int> pPosList, TileType pTileType)
     {
         tileType = pTileType;
 
@@ -32,7 +32,6 @@ public class GravelTileGroup : TileGroup
             tileList.Add(pos);
         }
 
-
         foreach (Vector2Int pos in tileList)
         {
             //메인블록과 가장자리 블록을 생성해준다.
@@ -44,6 +43,12 @@ public class GravelTileGroup : TileGroup
             {
                 tileBody.SetTile(pos.x, pos.y, bodyTile);
             }
+            UpdateOutBlock(pos);
+            if (createNum % crateWaitCycle == 0)
+            {
+                yield return new WaitForSeconds(craeteWaitTime);
+            }
+            createNum++;
         }
     }
 }

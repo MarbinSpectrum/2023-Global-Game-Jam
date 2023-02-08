@@ -35,6 +35,14 @@ public class GameManager : DontDestroySingleton<GameManager>
     private void Start()
     {
         curTime = startTime;
+        StartCoroutine(runGameLogic());
+    }
+
+    private IEnumerator runGameLogic()
+    {
+        yield return TileManager.instance.runCreateTiles();
+
+        Title.instance.RunTitle();
     }
 
     public void GameStart()

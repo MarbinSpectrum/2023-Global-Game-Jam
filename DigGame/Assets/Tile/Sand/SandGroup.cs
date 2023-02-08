@@ -14,7 +14,7 @@ public class SandGroup : TileGroup
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// : pPosList의 좌표데이터 타일을 생성한다.
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public override void SetTile(List<Vector2Int> pPosList, TileType pTileType)
+    public override IEnumerator runCreateTiles(List<Vector2Int> pPosList, TileType pTileType)
     {
         tileType = pTileType;
 
@@ -57,6 +57,11 @@ public class SandGroup : TileGroup
 
             }
             UpdateOutBlock(pos);
+            if (createNum % crateWaitCycle == 0)
+            {
+                yield return new WaitForSeconds(craeteWaitTime);
+            }
+            createNum++;
         }
     }
 

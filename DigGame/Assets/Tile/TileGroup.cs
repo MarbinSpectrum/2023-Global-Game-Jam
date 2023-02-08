@@ -6,6 +6,9 @@ using UnityEngine.Tilemaps;
 public class TileGroup : MonoBehaviour
 {
     protected TileType tileType;
+    protected const int crateWaitCycle = 25;
+    protected const float craeteWaitTime = 0.001f;
+    protected int createNum = 0;
 
     [SerializeField]
     protected TileBase bodyTile;
@@ -241,7 +244,7 @@ public class TileGroup : MonoBehaviour
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /// : pPosList의 좌표데이터 타일을 생성한다.
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public virtual void SetTile(List<Vector2Int> pPosList,TileType pTileType)
+    public virtual IEnumerator runCreateTiles(List<Vector2Int> pPosList, TileType pTileType)
     {
         tileType = pTileType;
 
@@ -249,19 +252,12 @@ public class TileGroup : MonoBehaviour
         int life = 1;
         switch (tileType)
         {
-            case TileType.Sand:
-                life = 2;
-                break;
             case TileType.Ground:
                 life = 3;
                 break;
             case TileType.DarkGound:
                 life = 4;
                 break;
-            case TileType.Gravel:
-                life = int.MaxValue;
-                break;
-
         }
 
         foreach (Vector2Int pos in pPosList)
@@ -278,12 +274,16 @@ public class TileGroup : MonoBehaviour
             tileList.Add(pos);
         }
 
-
         foreach (Vector2Int pos in tileList)
         {
             //메인블록과 가장자리 블록을 생성해준다.
             tileBody.SetTile(pos.x, pos.y, bodyTile);
             UpdateOutBlock(pos);
+            if (createNum % crateWaitCycle == 0)
+            {
+                yield return new WaitForSeconds(craeteWaitTime);
+            }
+            createNum++;
         }
     }
 

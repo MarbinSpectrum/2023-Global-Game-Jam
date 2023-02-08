@@ -5,88 +5,66 @@ using UnityEngine;
 public class AnimalManager : MonoBehaviour
 {
 
-    private Vector2Int _mousePosition;
-    private Vector2 _originalPosition;
-    private bool _crashed;
+    [SerializeField]
+    private SpriteRenderer spriteRenderer;
+    [SerializeField]
+    private SpriteRenderer houseObj;
+    [SerializeField]
+    private SpriteRenderer gridObj;
 
-    public bool _clicked = true;
     public int ID;
-    private List<Vector2Int> _vectorList = new();
     public int point;
 
-    private void Awake()
-    {
-        _originalPosition = transform.position;
-    }
+    public bool _clicked = true;
+    private bool _crashed;
 
-    void Update()
+    private void Update()
     {
-        var mousePosition = GetMousePos();
-        _mousePosition = GetMousePos();
-
         if (_clicked)
         {
-            transform.position = mousePosition + new Vector2(0.5f, 0);
+            Vector2Int mousePos = GetMousePos();
+            transform.position = mousePos + new Vector2(0.5f, 0);
+            if(Input.GetMouseButtonDown(0))
+            {
+                _clicked = !_clicked;
+
+                List<Vector2Int> vectorList = AnimalData.CheckAnimalNumber(mousePos, ID);
+                bool crashed = CheckCrash(vectorList);
+                if (crashed)
+                {
+                    PoolManager.instance.DestroyNowAnimal();
+                }
+                else
+                {
+                    HouseManager.AddHouse(vectorList);
+                    GameManager.instance.AddScore(point);
+                    GameManager.instance.killCnt++;
+
+                    spriteRenderer.enabled = false;
+                    houseObj.enabled = true;
+                    gridObj.enabled = false;
+
+                    PoolManager.instance.nowAnimal = null;
+                    PoolManager.instance.AnimalSetting();
+                }
+            }
         }
     }
 
-    public void OnMouseDown()
-    {
-        _clicked = !_clicked;
-        CheckNullTile();
-        if (!_clicked && _crashed)
-        {
-            transform.position = _originalPosition;
-            _crashed = false;
-            PoolManager.instance.nowAnimal = null;
-
-            Destroy(gameObject);
-        }
-        else if (!_crashed && !_clicked)
-        {
-            HouseManager.AddHouse(_vectorList);
-            GameManager.instance.AddScore(point);
-            GameManager.instance.killCnt++;
-            this.GetComponent<Collider2D>().enabled = false;
-            transform.GetChild(0).gameObject.SetActive(true);
-            GetComponent<SpriteRenderer>().enabled = false;
-            transform.GetChild(1).gameObject.SetActive(false);
-
-            PoolManager.instance.nowAnimal = null;
-
-            PoolManager.instance.AnimalSetting();
-        }
-    }
-
-    public void Destroy()
-    {
-        Destroy(gameObject);
-    }
-
-    private void CheckNullTile()
+    private bool CheckCrash(List<Vector2Int> pVectorList)
     {
         TileManager tileManager = TileManager.instance;
-        _vectorList = AnimalData.CheckAnimalNumber(_mousePosition, ID);
 
-        foreach (Vector2Int movePos in _vectorList)
+        foreach (Vector2Int checkPos in pVectorList)
         {
-
-            bool isBlock = tileManager.IsBlock(movePos.x, movePos.y);
-            if (isBlock || HouseManager.CheckHouse(movePos) || movePos.y > 0)
-            {
-                _crashed = true;
-                break;
-            }
-            _crashed = false;
+            bool isBlock = tileManager.IsBlock(checkPos.x, checkPos.y);
+            if (isBlock || HouseManager.CheckHouse(checkPos) || checkPos.y > 0)
+                return true;
         }
+        return false;
     }
 
-    private void CheckHouse()
-    {
-
-    }
-
-    Vector2Int GetMousePos()
+    public static Vector2Int GetMousePos()
     {
         Vector3 mousePos = Input.mousePosition;
         mousePos = Camera.main.ScreenToWorldPoint(mousePos);

@@ -275,7 +275,7 @@ public class PoolManager : DontDestroySingleton<PoolManager>
         if (nowAnimal != null)
         {
             nowAnimal._clicked = false;
-            nowAnimal.Destroy();
+            Destroy(nowAnimal.gameObject);
 
             nowAnimal = null;
         }

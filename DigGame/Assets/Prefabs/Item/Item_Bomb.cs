@@ -20,7 +20,7 @@ public class Item_Bomb : Item
             for (int y = -BoomDistance + pos.y; y <= BoomDistance + pos.y; y++)
             {
                 TileType tileType = tileManager.GetTile(x, y);
-                int distance = Mathf.Abs(pos.x - x) + Mathf.Abs(pos.y - y);
+                float distance = Vector2.Distance(pos,new Vector2(x,y));
                 if (BoomDistance < distance)
                     continue;
                 tileManager.DigBlock(x, y, BoomPower);

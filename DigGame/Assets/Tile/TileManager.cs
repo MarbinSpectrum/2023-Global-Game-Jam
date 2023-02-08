@@ -11,19 +11,21 @@ public class TileManager : FieldObjectSingleton<TileManager>
     private Dictionary<TileType, TileGroup> tileGroups = new Dictionary<TileType, TileGroup>();
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    /// : Start
+    /// : 鸥老积己阑 内风凭栏肺 贸府窃
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    private void Start()
+    public virtual IEnumerator runCreateTiles()
     {
-        Dictionary<TileType, List<Vector2Int>>  tileList = createTileMap.CreateMap();
+        Dictionary<TileType, List<Vector2Int>> tileList = createTileMap.CreateMap();
         tileList[TileType.Obstacle] = new List<Vector2Int>();
 
         foreach (KeyValuePair<TileType, List<Vector2Int>> tileListPair in tileList)
         {
             TileType tileType = tileListPair.Key;
             List<Vector2Int> posList = tileListPair.Value;
-            if(tileGroups.ContainsKey(tileType))
-            tileGroups[tileType].SetTile(posList, tileType);
+            if (tileGroups.ContainsKey(tileType))
+            {
+                yield return tileGroups[tileType].runCreateTiles(posList, tileType);
+            }
         }
     }
 

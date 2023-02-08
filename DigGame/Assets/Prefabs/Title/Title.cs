@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Title : MonoBehaviour
+public class Title : FieldObjectSingleton<Title>
 {
     public FollowCamera followCamera;
     public Vector3 targetOffset;
@@ -11,6 +11,15 @@ public class Title : MonoBehaviour
     public float cameraSize;
     public float duration;
     public Animation animation;
+    public Animation darkAni;
+    public BGM_Player bgmPlayer;
+
+    public void RunTitle()
+    {
+        darkAni.Play();
+        bgmPlayer.RunBGM();
+
+    }
 
     public void GameStart()
     {

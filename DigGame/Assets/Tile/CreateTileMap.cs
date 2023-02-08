@@ -48,7 +48,7 @@ public class CreateTileMap : MonoBehaviour
                 }
             }
         }
-        for(int y = -HEIGHT; y > -HEIGHT* 2; y--)
+        for(int y = -HEIGHT; y > -HEIGHT* 1.2f; y--)
         {
             for (int x = -5 - HEIGHT; x <= 5 + HEIGHT; x++)
             {

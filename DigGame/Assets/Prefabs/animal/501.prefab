@@ -100,7 +100,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6768930195329326821
 Transform:
   m_ObjectHideFlags: 0
@@ -123,7 +123,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2154230141382366455}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -179,7 +179,6 @@ GameObject:
   - component: {fileID: 2204588122275680661}
   - component: {fileID: 7083661270080244040}
   - component: {fileID: 7946253195262307479}
-  - component: {fileID: 8053202433464582574}
   m_Layer: 0
   m_Name: 501
   m_TagString: Untagged
@@ -268,32 +267,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72ff316b9ae711346b91a843d945b120, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _clicked: 1
+  spriteRenderer: {fileID: 7083661270080244040}
+  houseObj: {fileID: 986419364837450946}
+  gridObj: {fileID: 7452731490166914937}
   ID: 501
   point: 2000
---- !u!61 &8053202433464582574
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5009405920998808071}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -2, y: -1}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.9, y: 0.75}
-    oldSize: {x: 5, y: 4}
-    newSize: {x: 5.75, y: 4.6}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 5, y: 4}
-  m_EdgeRadius: 0
+  _clicked: 1

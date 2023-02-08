@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HouseManager : MonoBehaviour
 {
-    public static List<Vector2Int> houseList = new();
+    public static HashSet<Vector2Int> houseList = new();
     public static void AddHouse(List<Vector2Int> housePos)
     {
         foreach(var pos in housePos)

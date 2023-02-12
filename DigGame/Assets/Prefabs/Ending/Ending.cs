@@ -13,7 +13,7 @@ public class Ending : MonoBehaviour
     public GameObject Dialogue2;
     public TextMeshProUGUI ending001;
     public TextMeshProUGUI ending002;
-
+    public GameObject sun;
     public GameManager gameManager;
     public PoolManager poolManager;
 
@@ -37,6 +37,7 @@ public class Ending : MonoBehaviour
     public SpriteRenderer blueFilter;
 
     public BGM_Player endBGM;
+    public GameObject restart;
 
     public void StartEnding()
     {
@@ -68,6 +69,7 @@ public class Ending : MonoBehaviour
         yield return new WaitForSeconds(3f);
 
         endingHouse.SetActive(true);
+        sun.SetActive(false);
         float fromA = 0;
         float toA = 1;
         float elapsed = 0.0f;
@@ -97,7 +99,11 @@ public class Ending : MonoBehaviour
 
         Dialogue1.SetActive(false);
         Dialogue2.SetActive(true);
-     
+
+                yield return new WaitForSeconds(3f);
+
+        restart.SetActive(true);
+
 
     }
 }
